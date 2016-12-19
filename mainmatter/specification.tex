@@ -1,4 +1,50 @@
 \chapter{Specification}
 \label{Chapter:Specification}
 
-[Introduction to this section here]
+Introduction to this chapter here
+
+
+\section{Functional Requirements}
+
+    \subsection{Self-Management Component}
+    As it was mentioned in Chapter \ref{Chapter:Background} the mobile application proposed in this work is designed for people who are spending prolonged intervals of time in a static position during their day. This component's requirements are mainly derived from the background research. 
+    
+    \begin{enumerate}
+        \item The self-management component shall send notifications to the user
+        \begin{enumerate}
+            \item The user shall receive notifications when prolonged periods of sedentary time are detected 
+            \item Notifications shall not be sent when the user is sleeping
+        \end{enumerate}
+        \item The self-management component shall allow the user to set goals
+        \item the self-management component shall allow the user to select goals from a predefined list of goals
+    \end{enumerate}
+    
+    
+    \subsection{HAR Component}
+    The main purpose of the HAR component is to continuously classify human activities. The following requirements have been derived from analysing past and current human activity recognition mobile applications and devices.
+    
+    \begin{enumerate}
+        \item The HAR component shall recognise human activities
+        \begin{enumerate}
+            \item HAR component shall recognise the following activities:
+            \begin{enumerate}
+                \item walking
+                \item running
+                \item static
+                \item on a vehicle
+                \item ascending stairs
+                \item descending stairs
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    
+    \subsection{Application logic}
+    This section lists functional requirements that are part of the the general mobile application logic.
+    \begin{enumerate}
+        \item The application shall provide user authentication
+        \item The application shall store the recognised activities on the device
+    \end{enumerate}
+    
+    
+    
+    
