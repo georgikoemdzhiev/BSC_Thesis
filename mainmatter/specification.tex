@@ -13,50 +13,66 @@ The specification of the mobile self-management application can be split into th
             \item \gls{gsc} shall provide list of recommended \gls{pa} goals
             \item \gls{gsc} shall allow the user to set custom \gls{pa} goals
         \end{enumerate}
-        \item \gls{gsc} shall allow the user to set \gls{st} goals
+        \item \gls{gsc} shall allow the user to set Sedentary Time (\gls{st}) goals
+        \begin{enumerate}
+            \item \gls{gsc} shall allow the user to set the maximum duration of \gls{st} before a reminding notification is sent 
+        \end{enumerate}
     \end{enumerate}
     
     
-    \subsection{Monitoring omponent}
-    The main purpose of the HAR component is to continuously classify human activities. The following requirements have been derived from analysing past and current human activity recognition mobile applications and devices.
+    \subsection{Monitoring component}
+    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current similar mobile devices and applications.
     
     \begin{enumerate}
-        \item The HAR component shall recognise human activities
+        \item The \gls{mc} component shall recognise physical activities
         \begin{enumerate}
             \item HAR component shall recognise the following activities:
             \begin{enumerate}
                 \item walking
                 \item running
+                \item cycling
                 \item static
-                \item on a vehicle
-                \item ascending stairs
-                \item descending stairs
             \end{enumerate}
         \end{enumerate}
+        \item The \gls{mc} component shall analyse user's \gls{pa} and \gls{st} amounts in real time
+            \begin{enumerate}
+                \item \gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised, accordingly
+            \end{enumerate}
+        \item The user shall be able to set "Sleeping Hours", time interval during which no measurement of \gls{pa} or \gls{st} should occur
+      
     \end{enumerate}
     
     \subsection{Feedback Component}
-    This section lists functional requirements that are part of the the general mobile application logic.
+    The \gls{fc} is responsible for sending notifications to the user. It can provide important information such as attaining a set goal or reminder of detected prolonged inactivity time.
     \begin{enumerate}
-        \item The system shall provide user authentication
-        \item The system shall store the recognised activities on the device
-        \item The system shall display a list of past activities (e.g., daily and weekly organised)
+        \item \gls{fc} shall notify the user when they are being sedentary for too long (e.g. an hour)
+        
+        \item \gls{fc} shall notify the user when a previously set goal is attained (e.g. being active for 30 minutes)
+        
+        \item \gls{fc} shall not send nofications during the previously set "Sleeping Hours" of the user
     \end{enumerate}
 
 \section{Non-functional Requirements}
-The mobile application proposed in this work has to comply to a number of additional requirements. Since the components mentioned above are part of the same system their specifications will be discussed collectively.
-
-    \subsection{Limitations}
-    to be done
+The mobile application proposed in this work has to comply to a number of additional requirements. Since the \gls{gsc},\gls{mc} and \gls{fc} are all part of the same software, their non-functional requirements will be discussed all together.
+    
+    % \subsection{Limitations}
     
     \subsection{Accuracy}
-    to be done
+    The accuracy of the \gls{mc} shall be high enough so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily amounts. Consequently, the user may be doing less physical exercises.
     
-    \subsection{Power consumption}
-    to be done 
+    \subsection{Battery consumption}
+    Since the resources of every portable device (i.e. mobile phone) are constrained, the mobile application shall be optimised so that it consumes reasonable amount of battery power. For example, the user must not need to charge the device in the middle of the day since that since that renders measuring component of the application useless.
     
     \subsection{Security Requirements}
-    The proposed system in this work will not store or share user data outside the system. In addition, to ensure that the user's data is protected, the system will encrypt the stored user data (i.e. log-in credentials). 
+    The mobile application will not store data outside the system in order to minimise the risk of data breach. In addition, the following considerations have been taken into account:
+    
+    \begin{enumerate}
+        \item The system shall provide protection of user's data
+            \begin{enumerate}
+                \item The system shall show authentication screen before showing any sensitive data
+                \item The system shall encrypt data stored in a local database
+            \end{enumerate}
+    \end{enumerate}
     
     \subsection{System Quality Attributes}
     Introduction to this section here.
