@@ -1,12 +1,10 @@
 \chapter{Specification}
 \label{Chapter:Specification}
 
-Introduction to this chapter here
-
-
+The implementation of the mobile application can be split into three components: Goal-setting, Monitoring and Feedback. The Goal-Setting Component (GSC), as the name implies, handles setting goals as well as providing additional information such as recommended physical activity amounts per day. The Monitoring Component (MC) is the most complex component since it is responsible for recognising the current activity of the user (e.g. walking or static) and logging the data into a database. It is essentially a \gls{har} system with additional logic for logging the recognised activity as well as detecting prolonged sedentary behaviour in addition to measuring physical activity (in minutes). As far as the Feedback Component (FC) is concerned, it will provide feedback to the user in the form of mobile notifications. 
 \section{Functional Requirements}
 
-    \subsection{Self-Management Component}
+    \subsection{Goal-setting Component}
     As it was mentioned in Chapter \ref{Chapter:Background} the mobile application proposed in this work is designed for people who are spending prolonged intervals of time in a static position during their day. This component's requirements are mainly derived from the background research. 
     
     \begin{enumerate}

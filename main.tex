@@ -1,7 +1,12 @@
 \documentclass [oneside, a4paper, openany]{book}
+
+
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{hyperref} % Create hyperlinks within text
+\usepackage[toc,nonumberlist,nopostdot]{glossaries}
 
+\makeglossaries % Creates the glossary section
 
 \begin{document}
 
@@ -9,6 +14,11 @@
 \input{frontmatter/title-page}
 \input{frontmatter/declaration}
 \input{frontmatter/abstract}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/table-of-contents}
+% \input{frontmatter/list-of-figures}
+% \input{frontmatter/list-of-tables}
+\input{frontmatter/glossaries}
 
 \mainmatter
 \input{mainmatter/introduction}
