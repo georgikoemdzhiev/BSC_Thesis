@@ -5,7 +5,7 @@ The specification of the mobile self-management application can be split into th
 \section{Functional Requirements}
 
     \subsection{Goal-Setting Component}
-    As it was mentioned in Chapter \ref{Chapter:Background} the mobile application proposed in this work is designed for people who are spending prolonged intervals of time in a static position during their day. This component's requirements are mainly derived from the background research. 
+    As it was mentioned in Chapter \ref{Chapter:Background},  goal-setting is an important part of the behaviour change process. It allows the user to set goals which is the first step towards better lifestyle. This component's requirements are mainly derived from the background research. 
     
     \begin{enumerate}
         \item \gls{gsc} shall allow the user to set \gls{pa} goals
@@ -21,10 +21,10 @@ The specification of the mobile self-management application can be split into th
     
     
     \subsection{Monitoring component}
-    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current similar mobile devices and applications.
+    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current mobile devices and applications.
     
     \begin{enumerate}
-        \item The \gls{mc} component shall recognise physical activities
+        \item The \gls{mc} component shall classify physical activities
         \begin{enumerate}
             \item HAR component shall recognise the following activities:
             \begin{enumerate}
@@ -36,20 +36,20 @@ The specification of the mobile self-management application can be split into th
         \end{enumerate}
         \item The \gls{mc} component shall analyse user's \gls{pa} and \gls{st} amounts in real time
             \begin{enumerate}
-                \item \gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised, accordingly
+                \item \gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised
             \end{enumerate}
         \item The user shall be able to set "Sleeping Hours", time interval during which no measurement of \gls{pa} or \gls{st} should occur
       
     \end{enumerate}
     
     \subsection{Feedback Component}
-    The \gls{fc} is responsible for sending notifications to the user. It can provide important information such as attaining a set goal or reminder of detected prolonged inactivity time.
+    The \gls{fc} is responsible for sending notifications to the user. It can provide important information such as when a previously set goal is attained or reminder for the user that they are spending too much static time.
     \begin{enumerate}
         \item \gls{fc} shall notify the user when they are being sedentary for too long (e.g. an hour)
         
         \item \gls{fc} shall notify the user when a previously set goal is attained (e.g. being active for 30 minutes)
         
-        \item \gls{fc} shall not send notifications during the previously set "Sleeping Hours" of the user
+        \item \gls{fc} shall not send notifications during "Sleeping Hours" time interval
     \end{enumerate}
 
 \section{Non-functional Requirements}
@@ -58,19 +58,19 @@ The mobile application proposed in this work has to comply to a number of additi
     % \subsection{Limitations}
     
     \subsection{Accuracy}
-    The accuracy of the \gls{mc} shall be high enough so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily amounts. Consequently, the user may be doing less physical exercises.
+    The accuracy of the system shall be high so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily readings. Consequently, the user may be doing less physical activity if they are notified they attained a goal.
     
     \subsection{Battery consumption}
-    Since the resources of every portable device (i.e. mobile phone) are constrained, the mobile application shall be optimised so that it consumes reasonable amount of battery power. For example, the user must not need to charge the device in the middle of the day since that since that renders measuring component of the application useless.
+    Since the resources of every portable device (i.e. mobile phone) are constrained, the system shall be designed so that it consumes reasonable amount of battery power. For example, the user must not need to charge the device in the middle of the day since that renders measuring component of the application useless (the application cannot measure \gls{pa} when the device is on the user).
     
-    \subsection{Security Requirements}
-    The mobile application will not store data outside the system in order to minimise the risk of data breach. In addition, the following considerations have been taken into account:
+    \subsection{Security}
+    The mobile application shall store user data only on the system in order to minimise the risk of data breach. In addition, the following considerations have been taken into account:
     
     \begin{enumerate}
         \item The system shall provide protection of user's data
             \begin{enumerate}
                 \item The system shall show authentication screen before showing any sensitive data
-                \item The system shall encrypt data stored in a local database
+                \item The system shall encrypt the data stored in a local database
             \end{enumerate}
     \end{enumerate}
     
@@ -80,13 +80,19 @@ The mobile application proposed in this work has to comply to a number of additi
         Modern mobile applications should be able to quickly adapt to new requirements. That is why the system is follows the \gls{mvp} software pattern which increases the ability of the system to incorporate new business logic as needed.
         
         \subsubsection{Scalability}
-        to be done
+        Since it is difficult to predict how many users will use the system, the mobile application should support more than one user by design. 
+        
+        \subsubsection{Modularity}
+        The system is comprised of different units. For example, each screen is encapsulated in a separate directory which can be interchanged easily without changing the integrity of the system.  
         
         \subsubsection{Testability}
-        To assure that the system works as intended, the system shall be tested by both assertions and user testing. 
+        To assure that the system works as intended, the system shall be tested by both assertions and Quality Assurance tests. 
         
         \subsubsection{Maintainability}
-        to be done
+        The system shall be designed in such a way so that it allows for easy debugging and evolution. For example, extending the system by adding new features.
+        
+        \subsubsection{Robustness}
+        The system will constantly work in the background (e.g. collect contextual data) so ensuring that the system encompass as many points of failure as possible is crucial.
     
     
     
