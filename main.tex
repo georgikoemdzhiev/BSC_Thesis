@@ -2,6 +2,9 @@
 
 
 \usepackage[utf8]{inputenc}
+\usepackage[british]{babel} % Use British english for hyphenation etc
+\usepackage{tocbibind} % Auto add Bibliography etc to Table of Contents
+\usepackage[round]{natbib} % Use BibTeX for bibliography management
 \usepackage{graphicx}
 \usepackage{hyperref} % Create hyperlinks within text
 \usepackage[toc,nonumberlist,nopostdot]{glossaries}
@@ -22,13 +25,13 @@
 
 \mainmatter
 \input{mainmatter/introduction}
-\input{mainmatter/background}
+\input{mainmatter/literature-review}
 \input{mainmatter/specification}
 
 \appendix
 %Appendixes go here
 
 \backmatter
-%Back matter goes here
+ \input{backmatter/bibliography}
 
 \end{document}
