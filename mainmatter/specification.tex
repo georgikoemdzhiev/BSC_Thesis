@@ -1,11 +1,12 @@
 \chapter{Specification}
 \label{Chapter:Specification}
 
-As with every software project, a list of requirements has to be produced in order to define the scope of the software (i.e. what it does) before proceeding to its implementation. That normally involves communication with the client \citep{bell2005}. Due to the lack of a client (it is a rather group of people), my supervisor agreed on taking part in the requirement gathering process as my client. The specification of the mobile application can be split into three components: Goal-setting, Monitoring and Feedback. The Goal-Setting Component (GSC), as the name implies, handles setting goals as well as providing additional information such as recommended amounts of physical activity per day. The Monitoring Component (MC) is the most complex part of the system. It is essentially a \gls{har} system with additional logic for recognising the current activity of the user (e.g. walking or static) and logging the data into a database. In addition, this component is responsible for detecting sedentary behaviour and measuring physical activity amounts. As far as the Feedback Component (FC) is concerned, it provides feedback to the user in the form of notifications. 
-\section{Functional Requirements}
+As with every software project, a list of requirements has to be produced in order to define the scope of the software (i.e. what it does) before proceeding to its implementation. That normally involves communication with the client \citep[23]{bell2005}. Due to the lack of a specific client (my audience is a rather group of people), my supervisor agreed on taking part in the requirement gathering process as my client. The specification of the mobile application can be split into three components: Goal-setting, Monitoring and Feedback. The Goal-Setting Component (GSC), as the name implies, handles setting goals as well as providing additional information such as recommended amounts of physical activity per day. The Monitoring Component (MC) is the most complex part of the system. It is essentially a \gls{har} system with additional logic for recognising the current activity of the user (e.g. walking or static) and logging the data into a database. In addition, this component is responsible for detecting sedentary behaviour and measuring physical activity amounts. As far as the Feedback Component (FC) is concerned, it provides feedback to the user in the form of notifications.
 
+\section{Functional Requirements}
+    Functional are the requirements that concern the system directly. They state what the software product should do or how it should behave when certain conditions are met \citep[84]{sommerville2010}.
     \subsection{Goal-Setting Component}
-    As it was mentioned in Chapter \ref{Chapter:Literature-Review},  goal-setting is an important part of the behaviour change process. It allows the user to set goals which is the first step towards better lifestyle. This component's requirements are mainly derived from the background research. 
+    As it was mentioned in Chapter \ref{Chapter:Literature-Review},  goal-setting is an important part of the behaviour change process. This component's requirements are mainly derived from the background research. Its software implementation would allow the user to set goals which is the first step towards better lifestyle.
     
     \begin{enumerate}
         \item \gls{gsc} shall allow the user to set \gls{pa} goals
@@ -60,7 +61,7 @@ As with every software project, a list of requirements has to be produced in ord
     \end{enumerate}
 
 \section{Non-functional Requirements}
-The mobile application proposed in this work has to comply to a number of additional requirements. Since the \gls{gsc},\gls{mc} and \gls{fc} are all part of the same software, their non-functional requirements will be discussed all together.
+The mobile application proposed in this work has to comply with a number of additional requirements. According to \citet[87]{sommerville2010}, Non-functional are those requirements that do not concern the system directly. They apply constrains to the whole system such as performance and security.  Since the \gls{gsc}, \gls{mc} and \gls{fc} are all part of the same software, their non-functional requirements will be discussed all together.
     
     % \subsection{Limitations}
     
