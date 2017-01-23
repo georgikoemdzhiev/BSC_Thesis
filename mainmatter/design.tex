@@ -12,21 +12,22 @@ The design process has gone through many iterations to ensure the best possible 
         After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}.
 
     \section{Database Design}
-    This section discuses the design of the database system that will be used to store necessary data for \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:database_design_er_diagram} and includes the following tables:
+    This section discuses the design of the database system that will be used to store necessary data for \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:data_modeling_er_diagram} and includes the following tables:
     
-    \begin{itemize}
-        \item User
-        \item {User\_Activity}
-        \item {Training\_data}
-        \item {Activity}
-    \end{itemize}
-    
-     \begin{figure}
+    \begin{figure}[ht]
         \centering
-        \includegraphics[width=12cm]{database_design_er_diagram}
-        \caption{Database system ER Diagram}
-        \label{fig:database_design_er_diagram}
+        \includegraphics[width=12cm]{data_modeling_er_diagram}
+        \caption{Database design ER Diagram}
+        \label{fig:data_modeling_er_diagram}
     \end{figure}
+    
+        \subsection*{Entities}
+            \begin{itemize}
+                \item User
+                \item {Training\_data}
+                \item {Activity}
+            \end{itemize}
+    
     
     \section{Architectural design}
     This section discuses the design of the system on a software level.
