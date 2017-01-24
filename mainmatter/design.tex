@@ -13,20 +13,35 @@ The design process has gone through many iterations to ensure the best possible 
 
     \section{Database Design}
     This section discuses the design of the database system that will be used to store necessary data for \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:data_modeling_er_diagram} and includes the following tables:
-    
-    \begin{figure}[ht]
-        \centering
-        \includegraphics[width=12cm]{data_modeling_er_diagram}
-        \caption{Database design ER Diagram}
-        \label{fig:data_modeling_er_diagram}
-    \end{figure}
-    
-        \subsection*{Entities}
-            \begin{itemize}
-                \item User
-                \item {Training\_data}
-                \item {Activity}
-            \end{itemize}
+        
+        \subsection{User}
+        
+        \subsection{Activity}
+        
+        \subsection{Training\_data}
+        
+        \subsection{Entity Relationship Model}
+        
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=12cm]{data_modeling_er_diagram}
+            \caption{Database ER Diagram}
+            \label{fig:data_modeling_er_diagram}
+        \end{figure}
+        
+        \subsubsection{Entities}
+        
+        \begin{itemize}
+            \item User(user\_id, password, username, pa\_goal,max\_inactivity\_time)
+            \item Training\_data(user\_id, acc\_x\_fft\_1, acc\_x\_fft\_2, acc\_x\_fft\_3, acc\_x\_fft\_4...)
+            \item Activity(activity\_id, user\_id, type, date, duration)
+        \end{itemize}
+        
+        \subsubsection{Relationships}
+        \begin{itemize}
+        \item Does --- User does Activity [1:m][m:o]
+        \item Produces --- User produces Training\_data [1:m][m:o]
+        \end{itemize}
     
     
     \section{Architectural design}
