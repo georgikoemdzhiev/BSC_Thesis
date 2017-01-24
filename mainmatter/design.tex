@@ -37,14 +37,19 @@ The design process has gone through many iterations to ensure the best possible 
         \item Produces --- User produces Training\_data [1:m][m:o]
         \end{itemize}
         
-        \subsubsection{User}
-        The user table is responsible for storing the personal information of every registered user. For example, \textit{user\_id} (number) will allow every user to be uniquely identified so further information can be accessed. The table will also store the \textit{username} and \textit{password} of every user. These fields are used for the authenticating different users of the application upon login.
+        \subsection{User}
+        The user table is responsible for storing the personal information of every registered user. For example, \textbf{\textit{user\_id}} (number) will allow every user to be uniquely identified so further information can be accessed. The table will also store the \textbf{\textit{username}} and \textbf{\textit{password}} of every user. These fields are used for the authenticating different users of the application upon login.
         
         Also, the user table will store additional information such as the \gls{pa} goal and the maximum sedentary time (both in minutes) before a notification is send to remind the current logged-in user for the prolonged inactivity.   
         
-        \subsubsection{Activity}
+        \subsection{Activity}
+        As it can be seen from figure \ref{fig:data_modeling_er_diagram}, the Activity table is responsible for storing information for the different activities. Every activity entry in this table has a unique identifier \textbf{\textit{activity\_id}} so every record is uniquely identified in the table itself. Also, this table has \textbf{\textit{user\_id}} field which allows for associating an activity record with a specific user.
         
-        \subsubsection{Training\_data}
+        The \textbf{\textit{type}} field of the table is responsible for storing the different types of activities as mentioned in section \ref{subsection:monitoring-component} such as \textit{"walking"} or \textit{"static"}. Field \textbf{\textit{date}} as the name of the field suggest, will store the date when the activity was recorded in time. The last field of the activity table is \textbf{\textit{duration}}, this field stores the duration of the performed activity in seconds.
+        
+        An example of a table entry:\textit{"5,1,running,2017-01-24 20:16:09,3"}. Where \textit{"5"} is the id of the activity, \textit{"1"} is the id of the user who performed it, the next field is the date and \textit{"3"} is the duration of the activity \textit{running}.
+        
+        \subsection{Training\_data}
     
     
     \section{Architectural design}
