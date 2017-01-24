@@ -12,13 +12,7 @@ The design process has gone through many iterations to ensure the best possible 
         After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}.
 
     \section{Database Design}
-    This section discuses the design of the database system that will be used to store necessary data for \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:data_modeling_er_diagram} and includes the following tables:
-        
-        \subsection{User}
-        
-        \subsection{Activity}
-        
-        \subsection{Training\_data}
+    This section discuses the design of the database system that will be used to store data of \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:data_modeling_er_diagram}. It includes the following entities \textbf{User}, \textbf{Activity} and \textbf{Training\_data}. The following sections will explain the responsibilities of each entity (i.e.\ database tables).
         
         \subsection{Entity Relationship Model}
         
@@ -42,6 +36,15 @@ The design process has gone through many iterations to ensure the best possible 
         \item Does --- User does Activity [1:m][m:o]
         \item Produces --- User produces Training\_data [1:m][m:o]
         \end{itemize}
+        
+        \subsubsection{User}
+        The user table is responsible for storing the personal information of every registered user. For example, \textit{user\_id} (number) will allow every user to be uniquely identified so further information can be accessed. The table will also store the \textit{username} and \textit{password} of every user. These fields are used for the authenticating different users of the application upon login.
+        
+        Also, the user table will store additional information such as the \gls{pa} goal and the maximum sedentary time (both in minutes) before a notification is send to remind the current logged-in user for the prolonged inactivity.   
+        
+        \subsubsection{Activity}
+        
+        \subsubsection{Training\_data}
     
     
     \section{Architectural design}
