@@ -50,6 +50,9 @@ The design process has gone through many iterations to ensure the best possible 
         An example of a table entry:\textit{"5,1,running,2017-01-24 20:16:09,3"}. Where \textit{"5"} is the id of the activity, \textit{"1"} is the id of the user who performed it, the next field is the date and \textit{"3"} is the duration of the activity \textit{running}.
         
         \subsection{Training\_data}
+        The last database entity to discus is the Training\_data. The fields from the table \textbf{\textit{acc\_x\_fft\_1}},\textbf{\textit{acc\_x\_fft\_2}},\textbf{\textit{acc\_x\_fft\_3}}... will be responsible for storing the extracted features from the raw accelerometer data as discussed in section \ref{section:proposed-application}. The table field \textbf{\textit{user\_id}} will be used to associate a user with a particular record in the table.
+        
+        One point to note, this table will be used for two purposes at different times of the development of the project. First, it will be used to store all of the project participants training data. This data will be used to build an initial, general classifier. When a classifier is already build, this table will be used to store the labeled data that will be used to build a personalised classifier for a particular user.
     
     
     \section{Architectural design}
