@@ -40,7 +40,7 @@ The design process has gone through many iterations to ensure the best possible 
         \subsection{User}
         The user table is responsible for storing the personal information of every registered user. For example, \textbf{\textit{user\_id}} (number) will allow every user to be uniquely identified so further information can be accessed. The table will also store the \textbf{\textit{username}} and \textbf{\textit{password}} of every user. These fields are used for the authenticating different users of the application upon login.
         
-        Also, the user table will store additional information such as the \gls{pa} goal and the maximum sedentary time (both in minutes) before a notification is send to remind the current logged-in user for the prolonged inactivity.   
+        Also, the user table will store additional information such as the \gls{pa} goal and the maximum sedentary time (both in minutes) before a notification is send to remind the current logged-in user for the prolonged inactivity. Last but not least, the table stores \textbf{\textit{active\_time}} and \textbf{\textit{static\_time}}. These fields track the amount of activity and inactivity in minutes, respectively.  
         
         \subsection{Activity}
         As it can be seen from figure \ref{fig:data_modeling_er_diagram}, the Activity table is responsible for storing information for the different activities. Every activity entry in this table has a unique identifier \textbf{\textit{activity\_id}} so every record is uniquely identified in the table itself. Also, this table has \textbf{\textit{user\_id}} field which allows for associating an activity record with a specific user.
