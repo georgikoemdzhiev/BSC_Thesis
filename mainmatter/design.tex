@@ -12,7 +12,7 @@ The design process has gone through many iterations to ensure the best possible 
         After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}.
         
     \section{Architectural design}
-    This section discusses the software design choices made during the development of the system. The architectural design is the first stage in the design process of a system. It creates a critical link between the requirements discussed in Chapter \ref{Chapter:Specification} and the research knowledge gained in Chapter \ref{Chapter:Literature-Review}. The end-goal of the architectural design is to discover the major structural components of the system and how they communicate to each other \citep[148]{sommerville2010}. The full architectural model of the system can be seen in figure \ref{fig:architectural_design_component_diagram}
+    This section discusses the software design choices made during the development of the system. The architectural design is the first stage in the design process of a system. It creates a critical link between the requirements discussed in Chapter \ref{Chapter:Specification} and the research knowledge gained in Chapter \ref{Chapter:Literature-Review}. The end-goal of the architectural design is to discover the major structural components of the system and how they communicate to each other \citep[148]{sommerville2010}. The architectural model of the system can be seen in figure \ref{fig:architectural_design_component_diagram}. The model of the system will be discussed in the following sections.
     
     \begin{figure}[ht]
         \centering
@@ -20,6 +20,19 @@ The design process has gone through many iterations to ensure the best possible 
         \caption{ \textit{"Active Minutes"} Architectural model}
         \label{fig:architectural_design_component_diagram}
     \end{figure}
+    
+        \subsection{Architectural pattern}
+        Model-View-Presenter or \textbf{MVP} software architectural pattern was chosen to form the base of the proposed mobile system since it provides clean separation of concepts \citep[532]{zhang2010}. For example the \textit{View} is the \gls{ui} of the application. It is responsible for receiving user interaction and passing it to the \textit{Presenter}. The \textit{Presenter} acts as a mediator, it requests data from the \textit{Model} and returns it to update the \textit{View}. Figure \ref{fig:model_view_presenter_design_pattern} shows the interaction flow of the pattern. When the user interacts with the \gls{ui} of mobile application, the View receives the interaction (i.e. button click) and passes that information to the Presenter via Interface (\textit{IView}). The Presenter then invokes the appropriate method of the Model. Next, the Model applies the business logic and returns the formatted result to the View (via the Presenter). 
+        
+        The main advantages of using the \gls{mvp} pattern is that it increases the \textbf{testability} of the software via the concept of logic separation. For example, the View is only allowed to have framework specific code (i.e. Android UI components such as Button, ListView); Presenter and Model are comprised of Plain Old Java Objects or \textbf{POJO}. These POJO classes can be thoroughly tested outside the mobile application. In addition, the \gls{mvp} pattern introduces a certain level of abstraction in the architecture of the software (via the use of Interfaces, see figure \ref{fig:architectural_design_component_diagram}). That allows different parts of the software to be developed separately and then integrated into the application.
+    
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=13cm]{model-view-presenter-design-pattern}
+            \caption{Model-View-Presenter design pattern \citep[28]{syromiatnikov2014}}
+            \label{fig:model_view_presenter_design_pattern}
+        \end{figure}
+   
     
     
     \section{Database Design}
