@@ -14,9 +14,9 @@ The design process has gone through many iterations to ensure the best possible 
     \section{Architectural design}
     This section discusses the software design choices made during the development of the system. The architectural design is the first stage in the design process of a system. It creates a critical link between the requirements discussed in Chapter \ref{Chapter:Specification} and the research knowledge gained in Chapter \ref{Chapter:Literature-Review}. The end-goal of the architectural design is to discover the major structural components of the system and how they communicate to each other \citep[148]{sommerville2010}. The full architectural model of the system can be seen in figure \ref{fig:architectural_design_component_diagram}
     
-    \begin{figure}[hb]
+    \begin{figure}[ht]
         \centering
-        \includegraphics[width=12cm]{active-minutes-service-component-diagram}
+        \includegraphics[width=15cm]{active-minutes-service-component-diagram}
         \caption{ \textit{"Active Minutes"} Architectural model}
         \label{fig:architectural_design_component_diagram}
     \end{figure}
@@ -61,7 +61,7 @@ The design process has gone through many iterations to ensure the best possible 
         An example of a table entry:\textit{"5,1,running,2017-01-24 20:16:09,3"}. Where \textit{"5"} is the id of the activity, \textit{"1"} is the id of the user who performed it, the next field is the date and \textit{"3"} is the duration of the activity \textit{running}.
         
         \subsection{Training\_data}
-        The last database entity to discus is the Training\_data. The fields from the table \textbf{\textit{acc\_x\_fft\_1}},\textbf{\textit{acc\_x\_fft\_2}},\textbf{\textit{acc\_x\_fft\_3}}... will be responsible for storing the extracted features from the raw accelerometer data as discussed in section \ref{section:proposed-application}. The table field \textbf{\textit{user\_id}} will be used to associate a user with a particular record in the table.
+        The last database entity to discus is the Training\_data. The fields from the table \textbf{\textit{acc\_x\_fft\_1}},\newline\textbf{\textit{acc\_x\_fft\_2}},\textbf{\textit{acc\_x\_fft\_3}}... will be responsible for storing the extracted features from the raw accelerometer data as discussed in section \ref{section:proposed-application}. The table field \textbf{\textit{user\_id}} will be used to associate a user with a particular record in the table.
         
         One point to note, this table will be used for two purposes at different times of the development of the project. First, it will be used to store all of the project participants training data. This data will be used to build an initial, general classifier. When a classifier is already build, this table will be used to store the labeled data that will be used to build a personalised classifier for a particular user.
     
