@@ -9,7 +9,32 @@ The design process has gone through many iterations to ensure the best possible 
     \section{Mobile Platform and IDE}
     The first point that was considered in the design process was the \textbf{mobile platform} on which the proposed application will be implemented and distributed. After research on the current market, Google's \textit{Android} was fount to dominate in Europe \citep{williams2016}. Android-based smartphones hold 75.6\% of market share dominating other mobile platforms such as Apple's \textit{iOS} and Microsoft's \textit{Windows Phone}. Thus, Android OS was chosen to form the basis of the proposed mobile application since it will allow the application to be downloaded and used by as many people as possible.
         
-    After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}. It provides all the necessary developer tools such as \textit{Android Emulator} which is a basically a virtual phone that allows a developer to test an application on different versions of the platform. In addition, it supports direct integration of version control systems such as \textit{Git}.  
+    After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}. It provides all the necessary developer tools such as \textit{Android Emulator} which is a basically a virtual phone that allows a developer to test an application on different versions of the platform. In addition, it supports direct integration of version control systems such as \textit{Git}.
+    
+    \section{HAR}
+    The Human Activity Recognition procedure involves standard steps such as \textit{Data Preprocessing}, \textit{Feature Extraction} and \textit{Feature Selection}. The block diagram of the \gls{har} process can be seen in figure \ref{fig:har_process}.
+    
+    
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \draw (0,0) rectangle (2,2);
+            \node at (1,1) {Sample};
+            \draw [->] (2,1) -- (3,1);
+            \draw (3,0) rectangle (6.5,2);
+            \node at (4.7,1) {Data Preprocessing};
+            \draw [->] (6.5,1) -- (7.5,1);
+            \draw (7.5,0) rectangle (10.5,2);
+            \node at (9,1.5) {Feature Extraction};
+            \node at (9,1) {and};
+            \node at (9,0.5) {Feature Selection};
+            \draw [->] (10.5,1) -- (11.5,1);
+            \draw (11.5,0) rectangle (13.5,2);
+            \node at (12.5,1) {Classifier};
+        \end{tikzpicture}
+        \caption{Human Activity Recognition process}
+        \label{fig:har_process}
+    \end{figure}
         
     \section{Architectural design}
     This section discusses the software design choices made during the development of the system. The architectural design is the first stage in the design process of a system. It creates a critical link between the requirements discussed in Chapter \ref{Chapter:Specification} and the research knowledge gained in Chapter \ref{Chapter:Literature-Review}. The end-goal of the architectural design is to discover the major structural components of the system and how they communicate to each other \citep[148]{sommerville2010}. The architectural model of the system can be seen in figure \ref{fig:architectural_design_component_diagram}.
