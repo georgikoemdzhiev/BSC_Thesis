@@ -36,7 +36,7 @@ The design process has gone through many iterations to ensure the best possible 
     \end{figure}
     
     \subsection{Data Processing}
-    The data processing stage of the \gls{har} process normally involves segmenting the data into time windows. Considering the fact that the system will be running on a mobile device with constraint resources. The segmentation of the data has to be picked carefully. For example, windowing the data at 20 seconds will cause the CPU to do more computations to abstract the data into feature vectors. As it was found in the literature review (see section \ref{subsubsection:learning_alg_accuracy_power_consm}) 3 second time-window was found to produce good results in terms of power consumption and thus the proposed application will employ this window length as well.
+    The data processing stage of \gls{har} normally involves segmenting the data into time windows. Considering the fact that the system will be running on a mobile device with limited resources. The segmentation of the data has to be picked carefully. For example, choosing a 20-second window length will cause the CPU to do more computations to extract data features. As it was found in the literature review (see section \ref{subsubsection:learning_alg_accuracy_power_consm}), 3-second time window was found to produce good results in terms of power consumption, and thus the proposed application will adopt this window length as well.
     
         
     \section{Architectural design}
