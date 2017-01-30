@@ -12,8 +12,7 @@ The design process has gone through many iterations to ensure the best possible 
     After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}. It provides all the necessary developer tools such as \textit{Android Emulator} which is a basically a virtual phone that allows a developer to test an application on different versions of the platform. In addition, it supports direct integration of version control systems such as \textit{Git}.
     
     \section{HAR}
-    The Human Activity Recognition procedure involves standard stages such as \textit{Data Preprocessing}, \textit{Feature Extraction} and \textit{Feature Selection}. The block diagram of the \gls{har} process can be seen in figure \ref{fig:har_process}.
-    
+    The Human Activity Recognition procedure involves standard stages such as \textit{Data Preprocessing}, \textit{Feature Extraction} and \textit{Feature Selection} (see section \ref{subsubsection:feature-selection-extraction}). The block diagram of the \gls{har} process can be seen in figure \ref{fig:har_process}. Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka/} Data Mining Software has been chosen for the implementation of the \gls{har} component of the proposed system. Since there is no official support of the Weka API for the Android platform, a stripped-down version\footnote{https://github.com/rjmarsan/Weka-for-Android} of the original Weka Java API has been chosen. 
     
     \begin{figure}
         \centering
@@ -35,6 +34,7 @@ The design process has gone through many iterations to ensure the best possible 
         \caption{Human Activity Recognition process}
         \label{fig:har_process}
     \end{figure}
+    
         
     \section{Architectural design}
     This section discusses the software software architecture of the mobile application. The architectural design is the first stage in the design process of a system. It creates a critical link between the requirements discussed in Chapter \ref{Chapter:Specification} and the research knowledge gained in Chapter \ref{Chapter:Literature-Review}. The end-goal of the architectural design is to discover the major structural components of the system and how they communicate to each other \citep[148]{sommerville2010}. The architectural model of the system can be seen in figure \ref{fig:architectural_design_component_diagram}.
