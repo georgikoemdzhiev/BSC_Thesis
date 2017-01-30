@@ -14,7 +14,7 @@ The design process has gone through many iterations to ensure the best possible 
     \section{HAR}
     The Human Activity Recognition procedure involves standard stages such as \textit{Data Preprocessing}, \textit{Feature Extraction} and \textit{Feature Selection} (see section \ref{subsubsection:feature-selection-extraction}). The block diagram of the \gls{har} process can be seen in figure \ref{fig:har_process}. Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka/} Data Mining Software has been chosen for the implementation of the \gls{har} component of the proposed system. Since there is no official support of the Weka API for the Android platform, a stripped-down version\footnote{https://github.com/rjmarsan/Weka-for-Android} of the original Weka Java API has been chosen. 
     
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \begin{tikzpicture}
             \draw (0,0) rectangle (2,2);
@@ -27,13 +27,16 @@ The design process has gone through many iterations to ensure the best possible 
             \node at (9.3,1.5) {Feature Extraction};
             \node at (9.3,1) {and};
             \node at (9.3,0.5) {Feature Selection};
-            \draw [->] (11,1) -- (12.5,1);
-            \draw (12.5,0) rectangle (14.5,2);
-            \node at (13.5,1) {Classifier};
+            \draw [->] (11,1) -- (12,1);
+            \draw (12,0) rectangle (14,2);
+            \node at (13,1) {Classifier};
         \end{tikzpicture}
         \caption{Human Activity Recognition process}
         \label{fig:har_process}
     \end{figure}
+    
+    \subsection{Data Processing}
+    The data processing stage of the \gls{har} process normally involves segmenting the data into time windows. Considering the fact that the system will be running on a mobile device with constraint resources. The segmentation of the data has to be picked carefully. For example, windowing the data at 20 seconds will cause the CPU to do more computations to abstract the data into feature vectors. As it was found in the literature review (see section \ref{subsubsection:learning_alg_accuracy_power_consm}) 3 second time-window was found to produce good results in terms of power consumption and thus the proposed application will employ this window length as well.
     
         
     \section{Architectural design}
