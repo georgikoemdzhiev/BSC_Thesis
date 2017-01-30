@@ -58,7 +58,7 @@ The design process has gone through many iterations to ensure the best possible 
         \subsubsection{Entities}
         
         \begin{itemize}
-            \item User(user\_id, password, username, pa\_goal,max\_inactivity\_time)
+            \item User(user\_id, password, username, pa\_goal,max\_inactivity\_time, active\_time,\newline static\_time, is\_classifier\_personalised)
             \item Training\_data(user\_id, acc\_x\_fft\_1, acc\_x\_fft\_2, acc\_x\_fft\_3, acc\_x\_fft\_4...)
             \item Activity(activity\_id, user\_id, type, date, duration)
         \end{itemize}
@@ -72,7 +72,7 @@ The design process has gone through many iterations to ensure the best possible 
         \subsection{User}
         The user table is responsible for storing the personal information of every registered user. For example, \textbf{\textit{user\_id}} (number) will allow every user to be uniquely identified so further information can be accessed. The table will also store the \textbf{\textit{username}} and \textbf{\textit{password}} of every user. These fields are used for the authenticating different users of the application upon login.
         
-        Also, the user table will store additional information such as the \gls{pa} goal and the maximum sedentary time (both in minutes) before a notification is send to remind the current logged-in user for the prolonged inactivity. Last but not least, the table stores \textbf{\textit{active\_time}} and \textbf{\textit{static\_time}}. These fields track the amount of activity and inactivity in minutes, respectively.  
+        The user table will store additional information such as the \gls{pa} goal (\textbf{\textit{pa\_goal}}) and the maximum inactivity interval (\textbf{\textit{max\_inactivity\_time}}) before a notification is send to remind the current logged-in user for the prolonged inactivity. In addition, the table stores \textbf{\textit{active\_time}} and \textbf{\textit{static\_time}}. These fields track the amount of activity and inactivity in minutes, respectively. Last but not least, the table will store a boolean field called \textbf{\textit{is\_classifier\_personalised}}. This field will be \textit{False} by default and only changed when the general classifier is personalised with user's data.
         
         \subsection{Activity}
         As it can be seen from figure \ref{fig:data_modeling_er_diagram}, the Activity table is responsible for storing information for the different activities. Every activity entry in this table has a unique identifier \textbf{\textit{activity\_id}} so every record is uniquely identified in the table itself. Also, this table has \textbf{\textit{user\_id}} field which allows for associating an activity record with a specific user.
