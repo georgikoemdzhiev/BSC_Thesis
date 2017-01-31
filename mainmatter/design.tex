@@ -6,30 +6,33 @@ Thus a considerable amount of time has been spent in designing the system. \cite
 
 The design process has gone through many iterations to ensure the best possible quality of the product. The research presented in chapter \ref{Chapter:Literature-Review} has affected immensely the design, especially section \ref{section:commercial-har-systems}. The design can be split into four main sections, namely Mobile Platform and IDE; Database Design; Architectural design and User Interface (UI).
 
+    
+
     \section{Mobile Platform and IDE}
     The first point that was considered in the design process was the \textbf{mobile platform} on which the proposed application will be implemented and distributed. After research on the current market, Google's \textit{Android} was fount to dominate in Europe \citep{williams2016}. Android-based smartphones hold 75.6\% of market share dominating other mobile platforms such as Apple's \textit{iOS} and Microsoft's \textit{Windows Phone}. Thus, Android OS was chosen to form the basis of the proposed mobile application since it will allow the application to be downloaded and used by as many people as possible.
         
     After choosing the mobile platform, one important decision is to choose the development environment or the \textbf{Integrated Development Environment} (\gls{ide}) that will be used to develop the application. That was an easy decision since Android Studio is known to be the official \gls{ide} for Android development \citep{androidstudio2017}. It provides all the necessary developer tools such as \textit{Android Emulator} which is a basically a virtual phone that allows a developer to test an application on different versions of the platform. In addition, it supports direct integration of version control systems such as \textit{Git}.
     
     \section{HAR}
-    The Human Activity Recognition procedure involves standard stages such as \textit{Data Preprocessing}, \textit{Feature Extraction} and \textit{Feature Selection} (see section \ref{subsubsection:feature-selection-extraction}). The block diagram of the \gls{har} process can be seen in figure \ref{fig:har_process}. Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka/} Data Mining Software has been chosen for the implementation of the \gls{har} component of the proposed system. Since there is no official support of the Weka API for the Android platform, a stripped-down version\footnote{https://github.com/rjmarsan/Weka-for-Android} of the original Weka Java API has been chosen. 
+    The Human Activity Recognition procedure involves standard stages such as \textit{Data Preprocessing}, \textit{Feature Extraction} and \textit{Feature Selection} (see section \ref{subsubsection:feature-selection-extraction}). The block diagram of the \gls{har} process can be seen in figure \ref{fig:har_process}. Weka\footnote{http://www.cs.waikato.ac.nz/ml/weka/} Data Mining Software has been chosen for the implementation of the \gls{har} component of the proposed system. Since there is no official support of the Weka API for the Android platform, a stripped-down version\footnote{https://github.com/rjmarsan/Weka-for-Android} of the original Weka Java API has been chosen. It this library was tested prior to the design stage to ensure it is working on an android device properly. 
     
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
-            \draw (0,0) rectangle (2,2);
-            \node at (1,1) {Sample};
-            \draw [->] (2,1) -- (3,1);
-            \draw (3,0) rectangle (6.5,2);
-            \node at (4.7,1) {Data Preprocessing};
-            \draw [->] (6.5,1) -- (7.5,1);
-            \draw (7.5,0) rectangle (11,2);
-            \node at (9.3,1.5) {Feature Extraction};
-            \node at (9.3,1) {and};
-            \node at (9.3,0.5) {Feature Selection};
-            \draw [->] (11,1) -- (12,1);
-            \draw (12,0) rectangle (14,2);
-            \node at (13,1) {Classifier};
+            \draw (0,0) rectangle (2.4,2);
+            \node at (1.2,1.2) {Accelerometer};
+            \node at (1.2,0.8) {Sensor};
+            \draw [->] (2.4,1) -- (3.4,1);
+            \draw (3.4,0) rectangle (6.9,2);
+            \node at (5.2,1) {Data Preprocessing};
+            \draw [->] (6.9,1) -- (7.9,1);
+            \draw (7.9,0) rectangle (11.4,2);
+            \node at (9.7,1.5) {Feature Extraction};
+            \node at (9.7,1) {and};
+            \node at (9.7,0.5) {Feature Selection};
+            \draw [->] (11.4,1) -- (12.4,1);
+            \draw (12.4,0) rectangle (14.4,2);
+            \node at (13.4,1) {Classifier};
         \end{tikzpicture}
         \caption{Human Activity Recognition process}
         \label{fig:har_process}
@@ -37,6 +40,11 @@ The design process has gone through many iterations to ensure the best possible 
     
     \subsection{Data Processing}
     The data processing stage of \gls{har} normally involves segmenting the data into time windows. Considering the fact that the system will be running on a mobile device with limited resources. The segmentation of the data has to be picked carefully. For example, choosing a 20-second window length will cause the CPU to do more computations to extract data features. As it was found in the literature review (see section \ref{subsubsection:learning_alg_accuracy_power_consm}), 3-second time window was found to produce good results in terms of power consumption, and thus the proposed application will adopt this window length as well.
+    
+    During this stage, different filters could be applied to the raw data to remove unwanted information. For example, according to \citet[]{googlemotionsensors}, the raw data from an accelerometer sensor contains the earth's gravity forece as well. This factor will cause the device to read magnitude of g = 9.81 m/s2 when it is not accelerating (i.e. laying down on a table). That is why a low pass filter is applied to the raw to remove the force of gravity from the sensor readings. In addition to applying a low pass filter, the magnitude of x,y and z is calculated and used as a 4th dimension (in addition to x,y and z reading from the sensor) as it has been used in previous works to reduce the effect of device orientation \citep[153]{torreshuitzil2015b}.
+    
+    \subsection{Feature Extraction and Feature Selection}
+    During the initial research, a novel method for feature extraction was found. As it was mentioned in section \ref{subsubsection:feature-selection-extraction}, extracting the first \gls{fft} coefficients produce higher accuracy compared to the rest of the features (e.g. Time domain features such as Mean or Standard Deviation). The \gls{fft} algorithm 
     
         
     \section{Architectural design}
