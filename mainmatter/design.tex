@@ -19,9 +19,14 @@ The design process has gone through many iterations to ensure the best possible 
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
+            \node at (1.2,3) {Time window};
             \draw (0,0) rectangle (2.4,2);
-            \node at (1.2,1.2) {Accelerometer};
-            \node at (1.2,0.8) {Sensor};
+            \draw [decorate,decoration={brace,amplitude=10pt}] (0.0,2.2) -- (2.4,2.2); 
+            \draw (0,0.66) -- (2.4,0.66);
+            \draw (0,1.32) -- (2.4,1.32);
+            \node at (1.2,1) {Sample};
+            \node at (1.2,0.3) {Sample};
+            \node at (1.2,1.7) {Sample};
             \draw [->] (2.4,1) -- (3.4,1);
             \draw (3.4,0) rectangle (6.9,2);
             \node at (5.2,1) {Data Preprocessing};
