@@ -103,6 +103,12 @@ The design process has gone through many iterations to ensure the best possible 
             
             \subsubsection{DataCollectionService}
             In order to train a \gls{har} classifier, a training dataset is required. This service is responsible for the data collection process. That includes reading, reprocessing and windowing the raw accelerometer data as well as abstracting the data via the means of feature extraction (see section \ref{section:feature-selection&extraction}). Each feature vector stores 20 values (the first 5 \gls{fft} coefficients of every sensor dimension, namely x,y and z and their magnitude) as a record in the \textit{Training\_data} table (see figure \ref{fig:data_modeling_er_diagram}).
+            
+        \subsection{Views}
+        The View layer of the \gls{mvp} pattern is comprised of Interface classes that are implemented by Android components such as \textit{"Activity"} or \textit{"Fragment"}. The \textit{Activity} class creates a window (e.g. single screen) so the developer can set a specific layout (a specific arangement of \gls{ui} components such as \textit{"Buttons"} or \textit{"TextViews"}) via using the method \textit{"setContentView(View)"} \citep{googleactivity2017}. The \textit{"Fragment"} class can be interpreted as a \textit{"sub-activity"} that is highly reusable and must by hosted (or presented) in an Activity class \citep{googlefragments2017}. For example, the \textit{"LoginFragment"} and \textit{"SignupFragment"} are hosted in an Activity called \textit{"AuthenticationActivity"}. 
+            
+        \subsection{Presenters}
+        The \textit{Presenter} layer of application's architecture includes a Presenter class (or component in the figure  \ref{fig:architectural_design_component_diagram}) for every application screen. For example, the Log-in screen 
     
     \section{Database Design}
     This section discuses the design of the database system that will be used to store data of \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:data_modeling_er_diagram}. It includes the following entities \textbf{User}, \textbf{Activity} and \textbf{Training\_data}. The following sections will explain the responsibilities of each entity (i.e.\ database tables).
