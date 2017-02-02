@@ -102,19 +102,29 @@ The design process has gone through many iterations to ensure the best possible 
             The solo purpose of this service is to personalise the general classifier that is included in the application initially. It will be started by the above mentioned \textit{ActiveMinutesService} service when enough labeled data is collected. For example, the service is executed when there are x100 instances of \textit{walking},\textit{running}, \textit{cycling} and \textit{static} activity training data. Since it will run once in the lifetime of the application on the device, this service is implemented as a special kind of Service called \textit{IntentService}. It allows for execution of heavy tasks (such as training a classifier) in a worker (i.e. background) thread so the application's main thread (or \gls{ui} thread) is not affected.
             
             \subsubsection{DataCollectionService}
+            \label{section:data_collection_service}
             In order to train a \gls{har} classifier, a training dataset is required. This service is responsible for the data collection process. That includes reading, reprocessing and windowing the raw accelerometer data as well as abstracting the data via the means of feature extraction (see section \ref{section:feature-selection&extraction}). Each feature vector stores 20 values (the first 5 \gls{fft} coefficients of every sensor dimension, namely x,y and z and their magnitude) as a record in the \textit{Training\_data} table (see figure \ref{fig:data_modeling_er_diagram}).
             
         \subsection{Views}
         The View layer of the \gls{mvp} pattern is comprised of Interface classes that are implemented by Android components such as \textit{"Activity"} or \textit{"Fragment"}. This approach provides a layer of abstraction and logic separation which is one of the benefits of using the \gls{mvp} design pattern. From an Android standpoint, an \textit{Activity} is a class that creates a window (e.g. single screen) and its layout (a specific arrangement of \gls{ui} components such as \textit{"Buttons"}) can be set via using the method \textit{"setContentView(View)"} \citep{googleactivity2017}. According to \citet{googlefragments2017}, \textit{"Fragment"} is a \textit{"sub-activity"} like class with its own layout. They can be swapped with one another easily thus they are highly reusable. Fragments typically require a host Activity in order to be presented to the user. For example, the \textit{"LoginFragment"} and \textit{"SignupFragment"} are hosted in an Activity called \textit{"AuthenticationActivity"}. As it can be seen from figure \ref{fig:architectural_design_component_diagram} all of the \textit{View}s in the \gls{mvp} pattern communicate with a dedicated Presenter class in the \textit{Presenter} layer via an interface. The following sections will describe what are the responsibilities of each one of those components.
             
             \subsubsection{AuthenticationActivity}
-            As the name of the component suggests, this is a Android \textit{Activity} class that handles the login and sign up functionality of the application. This activity is responsible of presenting the two fragments it hosts, namely \textit{"LoginFragment"} and \textit{"SignupFragment"}. The LoginFragment is responsible of checking the login user credentials and eventually transferring the user to the main screen of the mobile application. As for the SignupFragment, it handles the process of creating a new user. and eventually sendint the user to the main screen as well.
+            As the name of the component suggests, this is a Android \textit{Activity} class that handles the login and sign up functionality of the application. This activity is responsible of presenting the two fragments it hosts, namely \textit{"LoginFragment"} and \textit{"SignupFragment"}. The LoginFragment is responsible of checking the login user credentials and eventually transferring the user to the main screen of the mobile application. As for the SignupFragment, it handles the process of creating a new user.
             
             \subsubsection{ActiveMinutesActivity}
+            The main purpose of this activity is to display the contents of the \textbf{"TodayFragment"} (e.g. Today screen) and \textit{"HistoryFragment"} (e.g. History screen). The TodayFragment shows current information to the user such as how much time a user has been active today ( as well as details for individual activities, see section \ref{section:user_interface_design}).
+            
+            The \textbf{HistoryFragment} is responsible for showing the log of activities both daily and weekly. This way the user can refer to a previous day in time if needed.
+            
+            \subsubsection{DataCollectionActivity}
+            This Android \textit{Activity} class is responsible for providing an interface for controlling the \textit{DataCollectionSertice} mentioned in section \ref{section:data_collection_service}. It's \gls{ui} provide buttons for starting and stopping the service as well as exporting the acquired data into a labeled dataset file format - \textit{ARFF}. Later on this file will be used to build a classifier using the machine learning library WEKA.
+            
+            \subsubsection{SettingsFragment}
+            As the name implies, this Fragment class is responsible for providing the user with the ability to change certain parameters of the application. For example, the user can change the default \gls{pa} goal as well as the \textit{"Sleeping Hours"} time window.
             
             
         \subsection{Presenters}
-        The \textit{Presenter} layer of application's architecture includes a Presenter class (or component in the figure  \ref{fig:architectural_design_component_diagram}) for every application screen. For example, the Log-in screen 
+        The \textit{Presenter} layer of application's architecture is comprised of a set of Presenter classes (see figure  \ref{fig:architectural_design_component_diagram}) associated with the different screens of the application.
     
     \section{Database Design}
     This section discuses the design of the database system that will be used to store data of \textit{"Active Minutes"} mobile application. The design of the database can be seen in figure \ref{fig:data_modeling_er_diagram}. It includes the following entities \textbf{User}, \textbf{Activity} and \textbf{Training\_data}. The following sections will explain the responsibilities of each entity (i.e.\ database tables).
@@ -160,4 +170,5 @@ The design process has gone through many iterations to ensure the best possible 
     
         
     \section{User Interface Design}
+    \label{section:user_interface_design}
     TO BE DONE
