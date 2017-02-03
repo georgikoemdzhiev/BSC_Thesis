@@ -172,6 +172,36 @@ The design process has gone through many iterations to ensure the best possible 
     
         
     \section{User Interface Design}
-    This section discusses the \gls{ui} design considerations during the development.
     \label{section:user_interface_design}
-    TO BE DONE
+    The process of designing a user interface is highly dependent on the system's specifications discussed in chapter \ref{Chapter:Specification}. For example, the application requires user authentication thus design for the login and sign up screens have been considered. A \gls{ui} design process proposed by \citet[60]{bell2005} has been implemented to help with the interface design process (see figure ). According to Bell, the \gls{ui} design process is usually informed by certain design principles and guidelines to make sure that the application is user-friendly. Next, prototyping tools are used to create a system prototype which is evaluated by the user for quality. That is followed by implementing the user's feedback into the prototype. This process is repeated until the user is happy with the prototype of the system.
+    
+    \begin{figure}[ht]
+    \centering
+        \begin{tikzpicture}
+            \draw[fill=black] (0,0) circle (0.2);
+            \draw [->] (0,0) -- (0,-1);
+            \draw (-1.5,-1) rectangle (1.5,-2);
+            \node at (0,-1.5) {Create prototype};
+            
+            \draw [->] (0,-2) -- (0,-3);
+            % \draw (-1.3,-3) rectangle (1.3,-4);
+            % \node at (0,-3.3) {Check with};
+            % \node at (0,-3.7) {User};
+            \node (check) [draw, shape=rectangle, minimum width=2.5cm, minimum height=1cm, anchor=center] at (0,-3.7) {Check with User};
+            
+            \draw [->] (0,-4) -- (0,-6);
+            \node (user) [draw, thick, shape=rectangle, minimum width=1cm, minimum height=1cm, anchor=center,rotate=45] at (0,-6.7) {};
+            
+            \node (ref) [draw, shape=rectangle, minimum width=3cm, minimum height=1cm, anchor=center] at (3.5,-5) {Refine prototype};
+            
+            \draw[->, to path={-| (\tikztotarget)}]
+  (user) edge (ref) (ref) edge (check);
+            % \path (2,2) edge [->,thick,out=100,in=190]  (3.5,5);
+        \end{tikzpicture}
+    \caption{Iterative steps when designing for functional requirements}\label{figure:design-process}
+    \end{figure}
+    
+        \subsection{Design Principles and Guidelines}
+        
+        \subsection{System Prototyping}
+    
