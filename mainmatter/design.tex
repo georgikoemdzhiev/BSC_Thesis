@@ -217,29 +217,15 @@ The design process has gone through many iterations to ensure the best possible 
         
         
         \subsection{Design Principles and Guidelines}
-        Design principles are well-accepted principles that can inform how a user interface is being designed. \citet[57-59]{bell2005} outlines that there are three main principles, namely \textit{learnability}, \textit{flexibility} and \textit{robustness}. Each of those general principles has been considered during the development of the \gls{ui} design.
         
-        \begin{enumerate}
-            \item Learnability (the ease of learning the system)
-            \begin{itemize}
-                \item \textbf{Predictability}. For example, if a button "Stop" is pressed that should lead to a stop operation and not pause.
-                
-                \item \textbf{Synthesizability}. The user should be informed for the effect of their actions (i.e. play a touch sound when the user taps on a button)
-                
-                \item \textbf{Familiarity}. Using already known facilities. For example, in figure \ref{fig:flinto_prototype} the bottom navigation bar icons are well-known across all android users. Adding a button with an icon similar to a rotated triangle is treated as a \textit{"Back"} button. 
-            \end{itemize}
-            
-            \item Flexibility
-            \begin{itemize}
-                \item \textbf{Customizability}. The user can customise the application. For example, the user is able to change their profile picture
-            \end{itemize}
-            
-            \item Robustness
-            \begin{itemize}
-                \item \textbf{Responsiveness}. The fact that the \gls{har} system of the application is implemented on the device allows for a very low responds time (e.g. no need to wait for a server response).
-                
-                \item \textbf{Task conformance}. The system facilitates enough features to satisfy basic sedentary time self-management (see chapter \ref{Chapter:Specification}).
-            \end{itemize}
-        \end{enumerate}
+        \subsubsection{Design Principles}
+        Design principles are well-accepted principles that can inform how a user interface is being designed. Platform specific principles have informed the system design. For example, the first design principle suggested by \citet{google2017b} \textbf{\textit{"Delight me in surprising ways"}} have been implemented in the authentication screens as the ability of the user to change screens via a swipe gesture. This action is reflected by the \textit{page indicator} at the bottom of the screens (see figure \ref{fig:authentication-screens}). According to Google, subtle effects such as these contribute to a feeling of effortless. 
         
-        Bell also states that when it comes to Design Guidelines, they need to be considered in the context of the platform a software is designed for. For example, \textit{"Active Minutes"} is being developed as an android application and thus it needs to comply with the official Android Design Guidelines \citep{googleamaterialdesign}.
+        \textbf{\textit{"Only show what I need when I need it"}} is another principle suggested by \citet{google2017b}. It focuses on the fact that people get focused when presented with a lot of information at once. \textit{"Active Minutes"} incorporates this principle by providing a \textit{"Navigational Drawer"} that provides additional options for the user such as \textit{Settings} and \textit{"Log Out"} buttons (see figure \ref{fig:nav-drawer-opened}). 
+        
+        \textbf{\textit{"I should always know where I am"}} is a principle that allows the user to gain confidence that they know how how to use the system. For example, when switching between the \textit{Login} and \textit{Signup} screens the text of the button is changed to \textit{"LOG IN"} and \textit{"SIGN UP"} accordingly (see figure \ref{fig:authentication-screens}).
+        
+        As per system specifications, the system will notify the user when a goal is met (see section \ref{section:feedback-component}). The next principle \textbf{\textit{"Only interrupt me if it's important"}} implies that the user should not be interrupted unless it is important. For example, the system sends a notification when a prolonged sedentary time is recognised. In this case, the user must be notified so they can take action.
+        
+        \subsubsection{Design Guidelines}
+        Bell also states that Design Guidelines need to be considered in the context of the platform the software is being designed for. For example, \textit{"Active Minutes"} is being developed as an android application and thus it needs to comply with platform specific design guidelines. The proposed system design has been influenced by the official Android design guidelines published online \citep{googleamaterialdesign}.
