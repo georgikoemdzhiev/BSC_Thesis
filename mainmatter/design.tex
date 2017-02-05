@@ -217,5 +217,29 @@ The design process has gone through many iterations to ensure the best possible 
         
         
         \subsection{Design Principles and Guidelines}
+        Design principles are well-accepted principles that can inform how a user interface is being designed. \citet[57-59]{bell2005} outlines that there are three main principles, namely \textit{learnability}, \textit{flexibility} and \textit{robustness}. Each of those general principles has been considered during the development of the \gls{ui} design.
         
-    
+        \begin{enumerate}
+            \item Learnability (the ease of learning the system)
+            \begin{itemize}
+                \item \textbf{Predictability}. For example, if a button "Stop" is pressed that should lead to a stop operation and not pause.
+                
+                \item \textbf{Synthesizability}. The user should be informed for the effect of their actions (i.e. play a touch sound when the user taps on a button)
+                
+                \item \textbf{Familiarity}. Using already known facilities. For example, in figure \ref{fig:flinto_prototype} the bottom navigation bar icons are well-known across all android users. Adding a button with an icon similar to a rotated triangle is treated as a \textit{"Back"} button. 
+            \end{itemize}
+            
+            \item Flexibility
+            \begin{itemize}
+                \item \textbf{Customizability}. The user can customise the application. For example, the user is able to change their profile picture
+            \end{itemize}
+            
+            \item Robustness
+            \begin{itemize}
+                \item \textbf{Responsiveness}. The fact that the \gls{har} system of the application is implemented on the device allows for a very low responds time (e.g. no need to wait for a server response).
+                
+                \item \textbf{Task conformance}. The system facilitates provides enough features to satisfy basic sedentary time self-management (see chapter \ref{Chapter:Specification}).
+            \end{itemize}
+        \end{enumerate}
+        
+        Bell also states that when it comes to Design Guidelines, they need to be considered in the context of the platform a software is designed for. For example, \textit{"Active Minutes"} is being developed as an android application and thus it needs to comply with the official Android Design Guidelines \citep{googleamaterialdesign}.
