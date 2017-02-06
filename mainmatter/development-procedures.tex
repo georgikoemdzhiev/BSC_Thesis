@@ -1,8 +1,14 @@
 \chapter{Development Methodologies}
 This chapter discuses the development practices that are used during the development process of the proposed system.  
 
-\section{Version Control System}
-When developing a system obstacles can appear unexpectedly and a developer has to be repaired when that happen. For example, a developer has introduced a untraceable bug in the code and now the system is very unstable. In order to prevent these situations the use of \textit{"Version Control"} system is required.
-
 \section{Development Model}
+\label{section:development-model}
 When As with every project, specific rules are needed in order to ensure that the software is developed in a manner that satisfy the software specifications and achieves the end-goals of the project. In the IT industry that is normally achieved by following a software development model. It specifies the required stages of the development and the order in which the stages are carried out.
+
+\section{Version Control System}
+When developing a software challenges can occur unexpectedly and a developer has to do whatever possible to ensure the their work is protected. For example, untraceable bug can be introduced in one of the iterations of the iterative development model (see section \ref{section:development-model}) that could lead to poor system performance. In order to prevent the (or at least dramatically lower)the occurrence these situations the use of \textit{"Version Control"} is encouraged.
+
+There are many Version Control Systems (VCS) out there such as Mercurial, Fossil and Git. The main purpose of a \gls{vcs} is to keep track of the changes in a project. If a developer is satisfied with a specific change, they can perform a \textit{commit}. That action will merge the change to the codebase and the commit command will be added to the changelog (list of commits). If there is a problem that has been caused by a previous \textit{"bad"} commit, the developer can simply revert the whole project to a more stable state by restoring the codebase to a previous known \textit{"good"} commit.
+
+For this project, Git has been chosen along with its web service GitHub\footnote{\url{https://github.com}} to serve as a \gls{vcs} due to the fact that it is easy to use and it is well-documented.
+
