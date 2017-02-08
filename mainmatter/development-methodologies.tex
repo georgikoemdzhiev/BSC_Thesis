@@ -11,6 +11,25 @@ As with every software product, specific rules are needed to ensure that the sof
     \item Because a product is produced early, unforeseen problems can be detected
 \end{itemize}
 
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            % nodes
+            \node (a1) [draw]  {Analysis};
+            \node (d1) [draw, below of=a1, right of=a1] {Design};
+            \node (c1) [draw, below of=d1, right of=d1] {Code};
+            \node (t1) [draw, below of=c1, right of=c1] {Test};
+            \node (o1) [draw, below of=t1, right of=t1] {Operation};
+            % \node [draw, below left=of a1] {Design};
+            
+            
+            % arrows
+            \draw[->, to path={-| (\tikztotarget)}](a1) edge (d1) (d1) edge (c1) (c1) edge (t1);
+        \end{tikzpicture}
+        \caption{Human Activity Recognition process}
+        \label{fig:incremental-model}
+    \end{figure}
+
 
 \section{Version Control System}
 When developing a software challenges can occur unexpectedly and a developer has to do whatever possible to ensure the their work is protected. For example, untraceable bug can be introduced in one of the iterations of the iterative development model (see section \ref{section:development-model}) that could lead to poor system performance. In order to prevent the (or at least dramatically lower)the occurrence these situations the use of \textit{"Version Control"} is encouraged.
