@@ -20,13 +20,13 @@ As with every software product, specific rules are needed to ensure that the sof
             \node (c1) [draw, below of=d1, right of=d1] {Code};
             \node (t1) [draw, below of=c1, right of=c1] {Test};
             \node (o1) [draw, below of=t1, right of=t1] {Operation};
-            % \node [draw, below left=of a1] {Design};
+            \node at (-1,-3) {Iteration};
             
             
             % arrows
-            \draw[->, to path={-| (\tikztotarget)}](a1) edge (d1) (d1) edge (c1) (c1) edge (t1);
+            \draw[->, to path={-| (\tikztotarget)}](a1) edge (d1) (d1) edge (c1) (c1) edge (t1) (t1) edge (o1) (o1) edge (a1);
         \end{tikzpicture}
-        \caption{Human Activity Recognition process}
+        \caption{Incremental software development model life cycle}
         \label{fig:incremental-model}
     \end{figure}
 
