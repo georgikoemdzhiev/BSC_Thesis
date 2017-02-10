@@ -3,12 +3,12 @@ This chapter discuses the development practices that are used during the develop
 
 \section{Development Model}
 \label{section:development-model}
-As with every software product, specific rules are needed to ensure that the software is developed in a manner that satisfy its specifications and achieves the end-goals. In the IT industry that is achieved by following a software development model. It specifies the required stages of the development and the order in which the they are carried out. In this project the \textit{Incremental Model}. The main idea behind this model is developing a system through iterative steps and in small incremental portions \citep[264]{bhuvaneswari2013}. The main benefits of using the model are:
+As with every software product, specific rules are needed to ensure that the software is developed in a manner that satisfy its specifications and achieves the end-goals. In the IT industry that is achieved by following a software development model. It specifies the required stages of the development and the order in which the they are carried out. In this project the \textit{Incremental Model} has been chosen to drive the development of the software. The main idea behind this model is developing a system through iterative steps and in small incremental portions \citep[264]{bhuvaneswari2013}. It ensures that each iteration (e.g. software build) is tested and working before using the previous iteration as a bases for the next one (see figure \ref{fig:incremental-model}). The The main benefits of using this model are:
 
 \begin{itemize}
     \item A product is produced early in the project's development
+    \item Because of the previous point, unforeseen problems can be detected early
     \item Client change requests can be implemented between increments
-    \item Because a product is produced early, unforeseen problems can be detected
 \end{itemize}
 
     \begin{figure}[H]
@@ -21,8 +21,6 @@ As with every software product, specific rules are needed to ensure that the sof
             \node (t1) [draw, below of=c1, right of=c1] {Test};
             \node (o1) [draw, below of=t1, right of=t1] {Operation};
             \node at (-1,-3) {Iteration};
-            
-            
             % arrows
             \draw[->, to path={-| (\tikztotarget)}](a1) edge (d1) (d1) edge (c1) (c1) edge (t1) (t1) edge (o1) (o1) edge (a1);
         \end{tikzpicture}
