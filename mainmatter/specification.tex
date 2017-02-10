@@ -80,10 +80,10 @@ The mobile application proposed in this work has to comply with a number of addi
     % \subsection{Limitations}
     
     \subsection{Accuracy}
-    The accuracy of the system shall be high so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily readings. Consequently, the user may be doing less physical activity if they are notified they attained a goal.
+    The accuracy of the system shall be above 90\% so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily readings. Consequently, the user may be doing less physical activity if they are notified they attained a goal.
     
     \subsection{Battery consumption}
-    Since the resources of every portable device (i.e. mobile phone) are constrained, the system shall be designed so that it consumes reasonable amount of battery power. For example, the user must not need to charge the device in the middle of the day since that renders measuring component of the application useless (the application cannot measure \gls{pa} when the device is on the user).
+    Since the resources of every portable device (i.e. mobile phone) are constrained, the system shall be designed so that it consumes reasonable amount of battery power. The device shall be able to function without the need for a charge for at least 12 hours. For example, the user must not need to charge the device in the middle of the day since that renders measuring component of the application useless (the application cannot measure \gls{pa} when the device is on the user).
     
     \subsection{Security}
     The mobile application shall store user data only on the system in order to minimise the risk of data breach. In addition, the following considerations have been taken into account:
@@ -99,13 +99,13 @@ The mobile application proposed in this work has to comply with a number of addi
     \subsection{System Quality Attributes}
         
         \subsubsection{Adaptability}
-        Modern mobile applications should be able to quickly adapt to new requirements as the market always changes. That is why the system design implements the \gls{mvp} software pattern which increases the ability of the system to incorporate new features easily.
+        Modern mobile applications should be able to quickly adapt to new requirements as the market changes. That is why the system design implements the \gls{mvp} software development pattern (discussed in chapter \ref{chapter:development_methodologies}) which increases the ability of the system to incorporate new features easily as the system is separated into loosely coupled logical parts.
         
         \subsubsection{Scalability}
-        The system should be scalable to accommodate large amounts of data collected by different users.
+        The system should be scalable to accommodate large amounts of data collected by different users. For example, the system should be able to handle the data for at least 5 users.
         
         \subsubsection{Modularity}
-        The system is comprised of different units. For example, each screen is encapsulated in a separate directory which can be interchanged easily without changing the integrity of the system.  
+        As mentioned above, the system follows the \gls{mvp} software pattern which allows for splitting the system into different logical parts. For example, each screen is encapsulated in a separate directory which can be interchanged easily without affecting the integrity of the system.  
         
         \subsubsection{Testability}
         To assure that the system works as intended, the system shall be tested by both assertions and Quality Assurance tests. 
@@ -114,7 +114,7 @@ The mobile application proposed in this work has to comply with a number of addi
         The system shall be designed in such a way so that it allows for easy debugging and evolution. For example, extending the system by adding new features.
         
         \subsubsection{Robustness}
-        The system will constantly work in the background (e.g. collect contextual data) so ensuring that the system encompass as many points of failure as possible is crucial.
+        Since the the system requires a constant monitoring of the user (e.g. collecting contextual data), it is imperative that the system encompass as many points of failure as possible. Thus the system shall be taken through series of QA tests as well as unit tests to minimise the points of failure. 
     
     
     
