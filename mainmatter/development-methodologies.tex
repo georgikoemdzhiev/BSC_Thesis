@@ -37,3 +37,15 @@ There are many Version Control Systems (VCS) out there such as Mercurial, Fossil
 
 For this project, Git has been chosen along with its web service GitHub\footnote{\url{https://github.com}} to serve as a \gls{vcs} due to the fact that it is easy to use and it is well-documented.
 
+
+\section{Project Management}
+It is important to stay organised when it comes to working on a project, especially when it involves the usage of limited resources (i.e. Time). Thus, a project management tool called \textit{Taiga.io}\footnote{\url{https://taiga.io}} was utilised to help keep track of the project's progress via \textbf{\textit{Kanban} boards}. With every incremental iteration (see \ref{fig:incremental-model} above) new tasks are identified, created and added to the Kanban boards.
+
+Using \textit{Kanban} boards introduces several benefits to the development of the project. Firstly, it provides a quick way to organise the project work visually. For example, boards titled \textit{"READY"} and \textit{"IN PROGRESS"} tables contain that tasks that are already implemented and what those that are being implemented, respectively (see figure \ref{fig:taiga-kanban-boards}). Secondly, it increases the development efficiency since one of the key aspects of the Kanban methodology is to limit the work in progress (WIP) by setting a limit \citep[]{atlassian2017}. For example, if the number of tasks in \textit{IN-PROGRESS} board is 1, that means that no other tasks should be started until the currently undergoing one is finished.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{taiga-kanban-boards}
+    \caption{Taiga Kanban boards}
+    \label{fig:taiga-kanban-boards}
+\end{figure}
