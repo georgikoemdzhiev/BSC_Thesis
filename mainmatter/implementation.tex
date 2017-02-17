@@ -1,2 +1,9 @@
 \chapter{Implementation}
 This chapter discusses the implementation details of the proposed mobile application. First, the \gls{har} stages will be discussed. That includes the data gathering from the projects' participants as well as data prepossessing and training a classifier. Next, the specifics of the mobile application itself will be discussed such as database and overall system design implementation.
+
+
+\section{Human Activity Recognition}
+The application needs to recognises human activities (i.e. walking and running) in order for self-management process to work. A human activity recognition system is needed to periodically recognise the activities of the smartphone user so the self-management system can take actions such as notify the person that they are being sedentary for too long. Implementation of the \gls{har} system will be discussed bellow.
+
+    \subsection{Data Collection}
+    One of the key stages in the development process of a typical supervised (online) \gls{har} system is the data collection stage. The data was collected from 3 fellow students in a controlled environment. All of the participants recorded 3 minutes of all of the following activities: (i.e. \textit{walking},\textit{running},\textit{cycling} and \textit{static}. The device that was used to collect the data was \textit{OnePlus One}. The frequency of the build-in accelerometer in the device was set to  (\textbf{list android available frequencies in a table}).That resulted to a dataset containing ~720 labeled records (3 second time window x 3 participants x 4 types of activities).
