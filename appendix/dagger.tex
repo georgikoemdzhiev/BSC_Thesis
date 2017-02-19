@@ -1,0 +1,34 @@
+\chapter{Dagger Component and Module}
+    
+\begin{lstlisting}[caption=Dagger Component example,frame=tlrb,basicstyle=\small,captionpos=b]
+    
+@ActivityScope
+@Subcomponent(modules = AuthModule.class)
+public interface AuthComponent {
+
+    void inject(LoginFragment loginFragment);
+    
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption= Dagger Module example,frame=tlrbr,basicstyle=\small,captionpos=b]
+    
+@Provides
+@ActivityScope
+ILoginModel provideLoginModel(IAuthDataManager dataManager) {
+    return new LoginModel(dataManager);
+}
+
+@Provides
+@ActivityScope
+ILoginPresenter provideLoginPresenter(ILoginModel model) {
+    return new LoginPresenter(model);
+}
+\end{lstlisting}
+
+
+
+
+
+  

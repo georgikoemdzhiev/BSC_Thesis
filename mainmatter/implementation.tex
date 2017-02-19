@@ -4,6 +4,36 @@ This chapter discusses the implementation details of the proposed mobile applica
 \section{The mobile application}
 
     \subsection{MVP and DI framework}
+    As discussed before, the implementation of the mobile application is following the \gls{mvp} software pattern, which allows for the clear separation of code concepts (see section \ref{section:architectural-design}). In addition, to help satisfying the non-functional requirements discussed in section \ref{section:system-quality-attributes}  \gls{mvp} software pattern is combined with a Dependency Injection (DI) framework called Dagger 2. The two work extremely well when used together.
+    
+    \subsubsection{Dependency Injection}
+    \citet[]{realm2016} states that dependency injection is a technique in software development where a dependency (i.e. an object of type B) is created externally and provided to satisfy Class A. 
+    
+    Dagger\footnote{\url{https://github.com/google/dagger}} is a framework that utilises this principle with the help of classes called  \textit{Component} and \textit{Module}. A module creates the necessary dependencies (e.g. object of class B) whereas the Component class determines where those dependencies will be "injected" (e.g. satisfy dependence's in class A). A concrete example of \gls{di} can be seen in Listing \ref{di-example}. 
+    
+    \begin{lstlisting}[caption=Dependency injection example,
+label=di-example,captionpos=b, frame=single,basicstyle=\small,float,floatplacement=H,breaklines=true]
+    public class LoginFragment extends Fragment implements ILoginView {
+    @Inject
+    ILoginPresenter mPresenter;
+    
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            
+            satisfyDependencies();
+            
+            mPresenter.setView(this);
+        }
+        
+        private void satisfyDependencies() {
+            ((ActiveMinutesApplication) getActivity()
+                    .getApplication()).buildAuthComp().inject(this);
+        }
+    
+    }
+    \end{lstlisting}
+    AS it can be seen from the listing, the \textbf{LoginFragment} (e.g. the login screen) requires an object of type \textit{\textbf{"ILoginPresenter"}} to function. The method \textit{\textbf{"satisfyDependencies()"}} provides the dependencies to the class (e.g. externally). All of the dependencies of the Login screen are provided from a Dagger module named \textit{\textbf{"AuthModule"}} which is responsible for providing and creating the concrete implementation of the above interface (e.g. ILoginPresenter). The full code of the \textit{\textbf{"AuthModule"}} can be seen in Appendix 
     
     \subsection{Realm Database}
     
