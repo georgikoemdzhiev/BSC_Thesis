@@ -1,4 +1,5 @@
 \chapter{Dagger Component and Module}
+\label{chapter:dagger-component-module}
     
 \begin{lstlisting}[caption=Dagger Component example,frame=tlrb,basicstyle=\small,captionpos=b]
     
@@ -26,6 +27,29 @@ ILoginPresenter provideLoginPresenter(ILoginModel model) {
     return new LoginPresenter(model);
 }
 \end{lstlisting}
+
+\begin{lstlisting}[caption=Dependency injection example,
+label=di-example,captionpos=b, frame=single,basicstyle=\small,float,floatplacement=H,breaklines=true]
+    public class LoginFragment extends Fragment implements ILoginView {
+    @Inject
+    ILoginPresenter mPresenter;
+    
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            
+            satisfyDependencies();
+            
+            mPresenter.setView(this);
+        }
+        
+        private void satisfyDependencies() {
+            ((ActiveMinutesApplication) getActivity()
+                    .getApplication()).buildAuthComp().inject(this);
+        }
+    
+    }
+    \end{lstlisting}
 
 
 
