@@ -2,7 +2,25 @@
 This chapter discusses the implementation details of the proposed mobile application. First, the \gls{har} stages will be discussed. That includes the data gathering from the projects' participants as well as data prepossessing and training a classifier. Next, the specifics of the mobile application itself will be discussed such as database and overall system design implementation.
 
 \section{The mobile application}
-      
+       
+    \subsection{MVP and Dependency Injection}
+    As discussed before, the implementation of the mobile application is following the \gls{mvp} software pattern, which allows for the clear separation of code concepts (see section \ref{section:architectural-design}). To better satisfy the requirements discussed in section \ref{section:system-quality-attributes}, \gls{mvp} is combined with a Dependency Injection (DI) principle. What \gls{di} do is shifting the responsibility of one class to create its dependencies to another class. For example, class Car requires class Engine as a parameter. Instead of creating a new instance of class Engine when class Car is created it is simply provided as a constructor parameter in class Car's constructor (see listing \ref{di-car-example}).
+    
+    Dagger\footnote{\url{https://github.com/google/dagger}} is a framework that utilises the \gls{di} principle in the form of \textit{Component} and \textit{Module} classes. A module creates the necessary dependencies (e.g. object of class B) whereas the Component class determines where those dependencies will be "injected" (e.g. satisfy dependence's in class A). A concrete example of \gls{di} can be seen in Listing \ref{di-example}. In this example, the \textbf{LoginFragment} (e.g. the login screen) requires an object of type \textit{\textbf{"ILoginPresenter"}} to function. The method \textit{\textbf{"satisfyDependencies()"}} provides the dependencies to the class (e.g. externally). All of the dependencies of the Login screen are provided from a Dagger module named \textit{\textbf{"AuthModule"}} which is responsible for providing and creating the concrete implementation of the above interface (e.g. ILoginPresenter). The full code of \textit{\textbf{"AuthModule"}} as well as \textit{\textbf{"AuthComponent"}} can be seen in Appendix \ref{chapter:dagger-component-module}.   
+    
+    
+\begin{lstlisting}[caption= DI example, label=di-car-example,frame=tlrbr,basicstyle=\small,captionpos=b]
+    class Car{
+        Engine engine;
+            Car(Engine engine){
+                this.engine = engine;
+            }
+       }
+    }
+\end{lstlisting}
+        
+    Combining the \gls{mvp} design pattern with dependency injection framework such as Dagger brings a lot of advantages for the software product. Firstly, the software becomes more loosely coupled as the \gls{mvp} enforces the use of interfaces and Dagger is responsible for injecting the concrete implementation of those interfaces where required. Secondly, it allows for logically structuring the codebase. For example, a common approach when using both \gls{mvp} and Dagger is to create a directory for each one of the mobile screens (see figure \ref{fig:app-directory-structure}) containing the necessary \gls{mvp} classes such as \textit{\textbf{Presenter}} and \textit{\textbf{Model}} and the as well as Dagger's \textit{\textbf{Module}} and \textit{\textbf{Component}} to handle the \gls{di} process.
+    
     \begin{wrapfigure}{RI}{0.3\textwidth}
         \begin{center}
             \includegraphics[width=0.3\textwidth]{app-directory-structure}
@@ -10,24 +28,6 @@ This chapter discusses the implementation details of the proposed mobile applica
     \caption{Data collection screen directory structure}
     \label{fig:app-directory-structure}
     \end{wrapfigure}
-    
-    \subsection{MVP and Dependency Injection}
-    As discussed before, the implementation of the mobile application is following the \gls{mvp} software pattern, which allows for the clear separation of code concepts (see section \ref{section:architectural-design}). To better satisfy the requirements discussed in section \ref{section:system-quality-attributes}, \gls{mvp} is combined with a Dependency Injection (DI) principle. What \gls{di} do is shifting the responsibility of one class to create its dependencies to another class. For example, class Car requires class Engine as a parameter. Instead of creating a new instance of class Engine when class Car is created it is simply provided as a constructor parameter in class Car's constructor (see listing \ref{di-car-example}).
-    
-    Dagger\footnote{\url{https://github.com/google/dagger}} is a framework that utilises the \gls{di} principle mentioned above with the help of classes called  \textit{Component} and \textit{Module}. A module creates the necessary dependencies (e.g. object of class B) whereas the Component class determines where those dependencies will be "injected" (e.g. satisfy dependence's in class A). A concrete example of \gls{di} can be seen in Listing \ref{di-example}. In this example, the \textbf{LoginFragment} (e.g. the login screen) requires an object of type \textit{\textbf{"ILoginPresenter"}} to function. The method \textit{\textbf{"satisfyDependencies()"}} provides the dependencies to the class (e.g. externally). All of the dependencies of the Login screen are provided from a Dagger module named \textit{\textbf{"AuthModule"}} which is responsible for providing and creating the concrete implementation of the above interface (e.g. ILoginPresenter). The full code of \textit{\textbf{"AuthModule"}} as well as \textit{\textbf{"AuthComponent"}} can be seen in Appendix \ref{chapter:dagger-component-module}.    
-    
-\begin{lstlisting}[caption= DI example, label=di-car-example,frame=tlrbr,basicstyle=\small,captionpos=b]
-   Class Car{
-    Engine engine;
-        Car(Engine engine){
-            this.engine = engine;
-        }
-   }
-}
-\end{lstlisting}
-        
-    Combining the \gls{mvp} design pattern with dependency injection framework such as Dagger brings a lot of advantages. Firstly, the software becomes loosely coupled as the \gls{mvp} enforces the use of interfaces and Dagger is responsible for injecting the concrete implementation of those interfaces where required. Secondly, it allows for logically structuring the codebase. For example, a common approach when using both \gls{mvp} and Dagger is to create a directory for each one of the mobile screens (see \ref{fig:app-directory-structure}) containing the necessary \gls{mvp} classes such as \textit{\textbf{Presenter}} and \textit{\textbf{Model}} and the as well as Dagger's \textit{\textbf{Module}} and \textit{\textbf{Component}} to handle the \gls{di} process.
-    
    
     
     \subsection{Realm Database}
