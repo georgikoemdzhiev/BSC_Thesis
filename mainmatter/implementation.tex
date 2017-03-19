@@ -1,18 +1,7 @@
 \chapter{Implementation}
-This chapter discusses the implementation details of the proposed mobile application. First, the \gls{har} stages will be discussed. That includes the data gathering from the projects' participants as well as data prepossessing and training a classifier. Next, the specifics of the mobile application itself will be discussed such as database and overall system design implementation.
+This chapter discusses the implementation details of the proposed mobile application. First, the \gls{har} stages will be discussed. That includes the data gathering process from the project participants as well as data prepossessing and training of the kNN classifier. Next, the self-management system will be discussed followed by the specifics of the mobile application itself such as database and overall system design implementation.
 
-\section{The mobile application}
-          
-    
-    \subsection{Realm Database}
-    
-    \subsection{Data collection service}
-    
-    \subsection{Active Minutes service}
-    
-
-
-\section{Human Activity Recognition}
+\section{HAR System}
 In order for the system to take actions such as notifying the user for a prolonged periods of inactivity or sending a notification when a \gls{pa} goal is achieved, the application needs to recognise human activities (i.e. walking and running). Implementation of the \gls{har} system will be discussed bellow.
 
     \subsection{Data Collection}
@@ -25,50 +14,6 @@ In order for the system to take actions such as notifying the user for a prolong
     \label{subsubsection:recorded_data}
     When all of the required data was collected, it was converted into a WEKA ARFF file format by pressing the "EXPORT" button on the Data Collection screen. The ARFF file was stored on the device's external memory (e.g. SD card). A sample of the produced ARFF file can be seen in Listing \ref{weka-arff-code}. A dataset containing ~720 labelled data points (or a total of ~36 minutes of data) was produced as a result of the data collection process. 
     
-   
-    
-\begin{lstlisting}[caption=WEKA ARFF file extract,
-label=weka-arff-code,captionpos=b, frame=single,basicstyle=\small,float,floatplacement=H,breaklines=true]
-@relation HAR
-    
-@attribute accX__fft1 numeric
-@attribute accX__fft2 numeric
-@attribute accX__fft3 numeric
-@attribute accX__fft4 numeric
-@attribute accX__fft5 numeric
-@attribute accY__fft1 numeric
-@attribute accY__fft2 numeric
-@attribute accY__fft3 numeric
-@attribute accY__fft4 numeric
-@attribute accY__fft5 numeric
-@attribute accZ__fft1 numeric
-@attribute accZ__fft2 numeric
-@attribute accZ__fft3 numeric
-@attribute accZ__fft4 numeric
-@attribute accZ__fft5 numeric
-@attribute accM__fft1 numeric
-@attribute accM__fft2 numeric
-@attribute accM__fft3 numeric
-@attribute accM__fft4 numeric
-@attribute accM__fft5 numeric
-@attribute class {walking,running,static,cycling}
-    
-@data
-9,-76,-834,25,22,4,-1,-401,-190,-3,3,5,-213,-94,-45,2,-50,-49,-15,18,walking
--0,-184,140,4,-34,-2,13,45,63,-8,0,51,-68,-30,-72,1,-52,15,-51,63,walking
--1,-13,-30,3,2,3,-18,-2,3,-21,-1,2,-4,-9,-1,-2,33,3,16,20,walking
-0,-16,-17,-22,6,-3,-6,-8,-16,-3,-15,-2,12,-5,9,8,8,37,38,-18,walking
--6,-22,14,-54,1,14,8,27,9,60,-22,-31,-11,-11,4,-7,1,0,-3,-39,running
--3,-11,-35,-3,-53,-13,-45,23,-57,17,-2,52,13,58,15,22,48,-36,25,-50,running
-3,7,-11,27,-41,-19,-31,-53,-107,10,0,-42,22,-42,3,20,34,-26,76,-104,running
--3,37,34,9,58,0,30,97,-74,83,4,-13,-39,40,26,-4,15,-10,27,-26,cycling
--1,-91,-131,-121,-58,-4,6,-66,22,70,3,-30,-76,-63,-30,-1,-39,-10,-39,-76,cycling
-1,-54,-41,-180,114,-3,4,-21,78,-188,3,8,-56,-19,70,0,-38,22,-83,103,cycling
-0.3,0,-1,1,-1.4,0,1,-1,0,0,0,-1,0,0,0,0,0,0,0,0,static
-0,-6,48,-8,0,0,-6,-21,2,5,0,-1,42,-6,0,0,0,-1.5,0,-1.6,static
--0.3,8,-4,3,-4,0.1,6,-4,2,-3,0,2,-2,2,-1,0,0.2,1,-0.4,0.2,static
-\end{lstlisting}
-    
     The device used to collect the data was \textit{OnePlus One} equipped with low-power high performance 3-axes accelerometer \footnote{\url{http://www.st.com/en/mems-and-sensors/lis3dh.html}}. As for the sampling frequency (SF) of the sensor, the Android Operating system provides a total of four different sampling frequencies for reading the accelerometer sensor, namely \textit{NORMAL: 5 Hz}, \textit{UI: 16 Hz}, \textit{GAME: 50 Hz}, and \textit{FASTEST}. The latter has been chosen for the SF of the built-in accelerometer as it has produced good results in \citet[3-5]{lee2016}. According to the Google's documentation \textit{FASTEST} SF depends on the hardware of the device \citep{googlesensormanager2017}. In this case, the SF was \textbf{115} Hz. 
     
     \subsection{Training the kNN classifier}
@@ -77,42 +22,42 @@ label=weka-arff-code,captionpos=b, frame=single,basicstyle=\small,float,floatpla
     \subsubsection*{Accuracy}
     The ARFF Weka file (dataset) was tested externally on a PC to find the optimal \gls{knn} parameters such as the number of neighbours the classifier should consider before making a class prediction as well as whether to perform a cross validation of the data. The testing was done using the PC version of WEKA \footnote{\url{http://www.cs.waikato.ac.nz/ml/weka/}} Machine Learning application. After performing thorough testing, the default parameters of the \gls{knn} classifier performed the the best reaching accuracy of \textit{83.7\%} for dataset containing 763 data points. The performance for the trained model can be seen in table \ref{table:4_class_confusion_matrix}. 
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{ |c|c|c|c||c| } 
- \hline
- a & b & c & d & classified as\\
- \hline \hline
- 140 & 4 & 2 & 33 & a = walking \\
- 57 & 112& 0 & 10 & b = running \\
- 0 & 1 & 218 & 0 & c = static \\
- 5 & 1 & 11 & 169 & d = cycling \\
- \hline
-\end{tabular}
-\caption{4 classes Confusion Matrix}
-\label{table:4_class_confusion_matrix}
-\end{table}
+    \begin{table}[ht]
+    \centering
+    \begin{tabular}{ |c|c|c|c||c| } 
+     \hline
+     a & b & c & d & classified as\\
+     \hline \hline
+     140 & 4 & 2 & 33 & a = walking \\
+     57 & 112& 0 & 10 & b = running \\
+     0 & 1 & 218 & 0 & c = static \\
+     5 & 1 & 11 & 169 & d = cycling \\
+     \hline
+    \end{tabular}
+    \caption{4 classes Confusion Matrix}
+    \label{table:4_class_confusion_matrix}
+    \end{table}
 
 According to the confusion matrix in the table above, data points of class "running" has been incorrectly classified 57 times as class "walking" and 10 times as class "cycling". However, for the implementation purposes of the proposed application that performance of the model is still acceptable because even though the classifier has been designed to distinguish between 4 classes, only 2 classes are taken into account, namely "static" and "active" (including "walking", "running" and "cycling") on a programming level. Feature versions of the application may utilise the "active" classes to show a more detailed information to the user such as how much time the user has spend walking or running throughout the day.
 
 To demonstrate the actual accuracy of the model taking account only those 2 classes, the original dataset has been modified so that only 2 classes are present - static and active. The confusion matrix after training the model(again the same \gls{knn} classifier with default parameters) can be seen in table \ref{table:2_class_confusion_matrix}. The actual accuracy of the classifier reaches 98.1\% since only 14 data points has been incorrectly classified.
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{ |c|c|c| } 
- \hline
- a & b & classified as\\
- \hline \hline
-  531 & 13 & a = active\\
-  1 & 218 & b = static\\
- \hline
-\end{tabular}
-\caption{2 classes Confusion Matrix}
-\label{table:2_class_confusion_matrix}
-\end{table}
+    \begin{table}[ht]
+    \centering
+    \begin{tabular}{ |c|c|c| } 
+     \hline
+     a & b & classified as\\
+     \hline \hline
+      531 & 13 & a = active\\
+      1 & 218 & b = static\\
+     \hline
+    \end{tabular}
+    \caption{2 classes Confusion Matrix}
+    \label{table:2_class_confusion_matrix}
+    \end{table}
     
     \subsection{HAR System Implementation}
-    The basic structure of the \gls{har} system integrated into the application has been informed by \citet[149]{labrador2013}. For example, the measurements of the accelerometer sensor in a given time can be represented pragmatically by a class \textit{Point} containing class fields such as "time" and "value". A simplified diagram of the \gls{har} system can be seen in figute \ref{fig:har_system_impl_class_diagram}.
+    The basic architecture of the \gls{har} system integrated into the application has been informed by \citet[149]{labrador2013}. For example, classes such as \textit{Point}, \textit{TimeSeries}, \textit{TimeWindow}, \textit{FeatureSet} and \textit{FeatureExtractor} form the core of the \gls{har} system. Simplified diagram of the \gls{har} system can be seen in figure \ref{fig:har_system_impl_class_diagram}. A brief discussion on the main responsibilities of the above-mentioned classes will is presented bellow.
     
     \begin{figure}[ht]
         \centering
@@ -121,8 +66,25 @@ To demonstrate the actual accuracy of the model taking account only those 2 clas
         \label{fig:har_system_impl_class_diagram}
     \end{figure}
     
+    Class \textbf{Point} is responsible for storing the readings of the smartphone accelerometer sensor. Every instance of the class stores the accelerometer readings such as the amount of acceleration in X, Y and Z direction in a class variable \textit{value} as well as a \textit{time} class variable which is used to compare different instances of the class.
+        
+    \textbf{TimeSeries} class extends \textit{ArrayList} which is one of the widely used data structure in the Java language since it allows easy storing and manipulation of list of items \citep{oraclearrayList_2017}. TimeSeries class stores a list of \textit{Point} values labeled by an \textit{id} value (see figure \ref{fig:har_system_impl_class_diagram}). For example, to store the accelerometer \textit{X} direction acceleration values in a TimeSeries instance, its \textit{id} could store value such as "accX".
+        
+    \textbf{TimeWindow} class extends Hashtable. That allows for storing values accessed by key \citep{oraclehashtable_2017}. For example, TimeWindow class provides means of storing \textit{TimeSeries} objects and accessing them via key. The key value used to associate every TimeSeries object is the same as the \textit{id} value of the TimeSeries object itself.
+        
+        
+\section{Self-Management System}
 
-\section{Self-Management System Implementation}
+\section{"Active Minutes" application}   
+    
+    \subsection{Realm Database}
+    
+    \subsection{Data collection service}
+    
+    \subsection{Active Minutes service}
+    
+    \subsection{Application UI}  
+
 
 
 
