@@ -105,15 +105,16 @@ This section discusses the implementation of self-management system. Its respons
     \subsubsection{FeedbackProvider}
     This class is responsible for providing information to the user in the form of Android notifications\footnote{\url{https://developer.android.com/reference/android/app/Notification.html}}. For example, when \textit{ActivityMonitor} detects that the user has reached their daily maximum continious interval (set sedentary goal) it would call \textit{provideProlongedInactivityFeedback()} method of the \textit{FeedbackProvider}.
     
-    Notifying the user of past events specially associated with user's inactivity is not very helpful from a self-management prespective. Thus, the class has been designed to include two methods that are called at 80\% achieved goal progress, namely \textit{provideEncouragingFeedback()} and \textit{provideWarningProlongedInactivityFeedback()}. For example, if the \gls{st} goal i.e., maximum continious inactivity (MCI) is set to be 60 minutes per day. The user will receive a notification at 48 minutes of continious inactivity giving the user a warning that they are approaching their \gls{mci}. 
+    Notifying the user of past events specially associated with user's inactivity is not very helpful from a self-management perspective. Thus, the class has been designed to include two methods that are called at 80\% achieved goal progress, namely \textit{provideEncouragingFeedback()} and \textit{provideWarningProlongedInactivityFeedback()}. For example, if the \gls{st} goal i.e., maximum continious inactivity (MCI) is set to be 60 minutes per day. The user will receive a notification at 48 minutes of continious inactivity giving the user a warning that they are approaching their \gls{mci}. 
 
-\section{"Active Minutes" application}   
+\section{"Active Minutes" application} 
+This section will discuss the main and most interesting building blocks of the proposed software. First, the realisation of the database design will be addressed. Next, the \textit{ActiveMinutes Service} functionality will be discussed followed by the Application UI.  
     
     \subsection{Realm Database}
+    As it was mentioned in section \ref{section:data-manager}, a library called \citet{realmdatabase_2017} is utilised to perform all the data management responsibilities. This third-party software was carefully chosen based on several factors. It offers Fast queries and Safe threading (accessing the data from many threads without conflicts). What is more, it saves a lot of time compared to implementing a database from scratch. The following sections will address how the database was implemented using the above-mentioned library. 
+    %\subsection{Data collection service} Not sure if to include it
     
-    \subsection{Data collection service}
-    
-    \subsection{Active Minutes service}
+    \subsection{ActiveMinutes Service}
     
     \subsection{Application UI}  
 

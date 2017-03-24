@@ -94,6 +94,7 @@ The design process has gone through many iterations to ensure the best possible 
         As it can be seen from figure \ref{fig:architectural_design_component_diagram} the \textit{Model} layer of the system architecture is comprised of \textit{DataManager}, \textit{ActiveMinutesService}, \textit{ClassifierPersonalisationService} and \textit{DataCollectionService}. These components will be discussed next.
         
             \subsubsection{DataManager}
+            \label{section:data-manager}
             The \textbf{\textit{DataManager}}, as the name implies, will be responsible for providing means of accessing the underling database object. For example, returning a list of activities for the logged in user. Almost all of the diagram components have access to an instance of the DataManager component (or Java Class) so they can perform operations such as saving a new user or loading user's physical activity goal. This class essentially is a wrapper of a \textbf{Realm} database object. After initial research, \citet{realm2014} was chosen to form the database of the mobile application. It is a third-party Android library found to be x100 faster compared to the Android native SQLite Object-Oriented Data Management System (OMS).
             
             \subsubsection{ActiveMinutesService}
