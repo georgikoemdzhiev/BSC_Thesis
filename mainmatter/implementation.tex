@@ -114,8 +114,15 @@ This section will discuss the main and most interesting building blocks of the p
     As it was mentioned in section \ref{section:data-manager}, a library called \citet{realmdatabase_2017} is utilised to perform all the data management responsibilities. This third-party software was carefully chosen based on several factors. It offers Fast queries and Safe threading (accessing the data from many threads without conflicts). What is more, it saves a lot of time compared to implementing a database from scratch. The following sections will address how the database was implemented using the above-mentioned library. A simplified version of the Realm database can be seen in figure \ref{fig:realm_database}. 
     %\subsection{Data collection service} Not sure if to include it
     
+    \begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{simple_data_manager_class_diagram}
+    \caption{Realm database class diagram (simplified)}
+    \label{fig:realm_database}
+    \end{figure}
+    
     \subsubsection{RealmObject}
-     The database design discussed in \ref{section:database-design} is implemented using Java classes. \citet{realmdatabase_2017} allows to represent a typical database table as a Java class with the difference that it must extends \textit{RealmObject}. Every class that extends \textit{RealmObject} exposes it in the system and makes it available for access via a \textit{Realm} object. For example, in listing \ref{accessing_database_tables} the method \textit{getTrainingData()} queries the \textit{TrainingData} table for records matching a specific \textit{user\_id} and returns the result as a WEKA \textit{Instances} object (i.e., dataset). The \textit{TrainingData} is accessed in the \textit{where} clause.
+     The database design discussed in \ref{section:database-design} is implemented using Java classes. The \textbf{Realm} database library allows to represent a typical database table as a Java class with the difference that it must extends \textit{RealmObject}. That allows the class to be automatically "converted" into a database table. Also, it becomes available for access via a \textit{Realm} object. For example, in listing \ref{accessing_database_tables} the method \textit{getTrainingData()} queries the \textit{TrainingData} table for records matching a specific \textit{user\_id} and returns the result as a WEKA \textit{Instances} object (i.e., dataset). The \textit{TrainingData} is accessed in the \textit{where} clause.
      
      \begin{lstlisting}[caption= Accessing database tables, label=accessing_database_tables,frame=tlrbr,basicstyle=\small,captionpos=b]
    public Instances getTrainingData(int userId) {
@@ -126,15 +133,9 @@ This section will discuss the main and most interesting building blocks of the p
         
         return getWekaInstanceFrom(realmResults);
     }
-\end{lstlisting}
+    \end{lstlisting}
     
-     
-    \begin{figure}[ht]
-    \centering
-    \includegraphics[width=12cm]{simple_data_manager_class_diagram}
-    \caption{Realm database class diagram (simplified)}
-    \label{fig:realm_database}
-\end{figure}
+    
     
     \subsection{ActiveMinutes Service}
     
