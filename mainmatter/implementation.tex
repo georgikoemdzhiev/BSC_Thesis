@@ -136,7 +136,9 @@ This section will discuss the main and most interesting building blocks of the p
     \end{lstlisting}
     
     \subsubsection{DataManager}
-    This class encapsulates a \textit{Realm} object providing methods such as 
+    This class encapsulates a \textit{Realm} object and provides methods methods to manipulate the realm database. The \textit{DataManager} class is split into 3 main data managers in the system to help maintain the code, \textit{AuthDataManager}, \textit{ActivityDataManager} and \textit{TrainingDataManager}. 
+    
+    \textbf{AuthDataManager} is responsible for the authentication as well as the registration of users in the database. For example, the Login and Sign up screens mentioned in section \ref{section:architectural-design} use an instance of \textit{AuthDataManager} in order to \textit{login} or \textit{register} users.
     
     
     \subsection{ActiveMinutes Service}
