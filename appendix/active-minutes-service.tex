@@ -1,0 +1,51 @@
+\chapter{ActiveMinutesService}
+\label{chapter:active-minutes-service}
+\begin{lstlisting}[caption=ActiveMinutesService class (simplified),
+    frame=tlrbr,
+    basicstyle=\small,
+    captionpos=b,
+    label=observer-observable-example]
+    public class ActiveMinutesService extends Service
+    implements SensorEventListener {
+    ...
+    @Inject
+    @Named("classify")
+    IHarManager mHarManager;
+
+    @Inject
+    IActivityMonitor mActivityMonitor;
+    ...
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        satisfyDependencies();
+       ...
+        setUpActivityMonitor();
+
+
+    }
+
+    private void setUpActivityMonitor() {
+        // set the logged in user...
+        mActivityMonitor.setUser(mAuthDataManager.getLoggedInUser());
+        // add observable mHarManager to the observer ActivityMonitor
+        ((HarClassifyManager) mHarManager)
+        .addObserver((Observer) mActivityMonitor);
+    }
+    ...
+    private void satisfyDependencies() {
+        ((ActiveMinutesApplication) getApplication()).getComponent()
+        .inject(this);
+    }
+
+    private void runAsForeground() {
+        ...
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        mHarManager.feedData(sensorEvent.values, sensorEvent.timestamp);
+    }
+   ...
+}
+\end{lstlisting}
