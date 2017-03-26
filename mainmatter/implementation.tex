@@ -124,7 +124,8 @@ This section will discuss the main and most interesting building blocks of the p
     \subsubsection{RealmObject}
      The database design discussed in \ref{section:database-design} is implemented using Java classes. The \textbf{Realm} database library allows to represent a typical database table as a Java class with the difference that it must extends \textit{RealmObject}. That allows the class to be automatically "converted" into a database table. Also, it becomes available for access via a \textit{Realm} object anywhere in the system. For example, in listing \ref{accessing_database_tables} the method \textit{getTrainingData()} queries the \textit{TrainingData} table for records matching a specific \textit{user\_id} and returns the result as a WEKA \textit{Instances} object (i.e., dataset). The \textit{TrainingData} is accessed in the \textit{where} clause.
      
-     \begin{lstlisting}[caption= Accessing database tables, label=accessing_database_tables,frame=tlrbr,basicstyle=\small,captionpos=b]
+     \begin{lstlisting}[caption= Accessing database tables, label=accessing_database_tables,
+     frame=tlrbr,basicstyle=\small,captionpos=b]
    public Instances getTrainingData(int userId) {
         RealmResults<TrainingData> realmResults = realm
         .where(TrainingData.class)
@@ -140,8 +141,41 @@ This section will discuss the main and most interesting building blocks of the p
     
     
     \subsection{ActiveMinutes Service}
-    As it was mentioned in section \ref{section:active-minutes-service}, this Android service continuously collects contextual information about the logged-in user. In order to do that it requires the functions of two systems discussed in this chapter, namely \textit{HAR} and \textit{Self-Management}. \textit{ActiveMinutesService} utilises these systems so they work together. A logical view of how this is achieved can be seen in figure ??.
+    As it was mentioned in section \ref{section:active-minutes-service}, this Android service continuously collects contextual information about the logged-in user. In order to do that it requires the functions of two systems discussed earlier in this chapter, namely \textit{HAR} and \textit{Self-Management}. \textit{ActiveMinutesService} utilises these systems so they work together. A logical view of how this is achieved can be seen in figure \ref{fig:active-minutes-service-class-diagram}. 
     
+    \begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{active-minutes-service-class-diagram}
+    \caption{ActiveMinutesService class diagram}
+    \label{fig:active-minutes-service-class-diagram}
+    \end{figure}
+    
+    Implementing \textit{HarManager} as \textbf{Observable} and \textit{ActivityManager} as \textbf{Observer}  (refer back to figure \ref{fig:har_system_impl_class_diagram} and \ref{fig:self_management_system}) allows to connect the two systems so they can work together and exchange information in the service. For example, when the service is started (e.g., when a user logs is) it calls a method called \textit{onCreate()} which consequently adds \textit{ActivityManager} to the list of observers of \textit{HarManager} (see listing \ref{observer-observable-example}).
+    
+    \begin{lstlisting}[caption= Observer-Observable pattern implementation in ActiveMinutesService,
+    frame=tlrbr,
+    basicstyle=\small,
+    captionpos=b,
+    label=observer-observable-example]
+    public class ActiveMinutesService extends Service
+    implements SensorEventListener {
+    ...
+    @Inject
+    @Named("classify")
+    IHarManager mHarManager;
+
+    @Inject
+    IActivityMonitor mActivityMonitor;
+    ...
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        satisfyDependencies();
+        ...
+        mHarManager.addObserver(mActivityMonitor);
+    }
+
+\end{lstlisting}
     
     \subsection{Application UI}  
 

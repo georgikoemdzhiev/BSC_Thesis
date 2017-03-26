@@ -66,7 +66,7 @@ Using \textit{Kanban} boards introduces several benefits to the development of t
         
     Combining the \gls{mvp} design pattern with dependency injection framework such as Dagger brings a lot of advantages for the software product. Firstly, the software becomes more loosely coupled as the \gls{mvp} enforces the use of interfaces and Dagger is responsible for injecting the concrete implementation of those interfaces where required. Secondly, it allows for logically structuring the codebase. For example, a common approach when using both \gls{mvp} and Dagger is to create a directory for each one of the mobile screens (see figure \ref{fig:app-directory-structure}) containing the necessary \gls{mvp} classes such as \textit{\textbf{Presenter}} and \textit{\textbf{Model}} and the as well as Dagger's \textit{\textbf{Module}} and \textit{\textbf{Component}} to handle the \gls{di} process.
     
-    \begin{lstlisting}[caption= DI example, label=di-car-example,frame=tlrbr,basicstyle=\small,captionpos=b]
+\begin{lstlisting}[caption= DI example, label=di-car-example,frame=tlrbr,basicstyle=\small,captionpos=b]
     class Car{
         Engine engine;
             Car(Engine engine){
