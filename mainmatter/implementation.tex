@@ -90,6 +90,7 @@ This section discusses the implementation of self-management system. Its respons
 \end{figure}
 
     \subsubsection{ActivityMonitor}
+    \label{section:activity-monitor}
     As the name implies, this class monitors user's \gls{pa} and \gls{st} levels. ActivityMonitor accesses the previously set daily physical activity and maximum continuous inactivity goals set by the user. The User object that this class needs is provided by a method called \textit{setUser(User user)}. The details of how the user is set will be discussed in more detail in a subsequent section.
     
     One of the most important methods of the class is called \textbf{monitorActivity(activityClass: int)}. This method is called by the \textbf{HarManager} mentioned above as soon as an activity type is recognised (every 3 seconds). It passes the recognised activity to the ActivityMonitor via the method mentioned above. ActivityMonitor then is able to react on the activity type. For example, if the activity type is of type \textit{Static}, ActivityMonitor calls the DataManager's \textit{incCurrentInacInterval()} method which increments the current inactivity interval in the database.
@@ -141,7 +142,7 @@ This section will discuss the main and most interesting building blocks of the p
     
     
     \subsection{ActiveMinutes Service}
-    As it was mentioned in section \ref{section:active-minutes-service}, this Android service continuously collects contextual information about the logged-in user. In order to do that it requires the functions of two systems discussed earlier in this chapter, namely \textit{HAR} and \textit{Self-Management}. \textit{ActiveMinutesService} utilises these systems so they work together. A logical view of how this is achieved can be seen in figure \ref{fig:active-minutes-service-class-diagram}. 
+    This service is the most important class in the mobile application. It is responsible for the 2 out of 3 key behaviour change components, namely Monitoring and Feedback (refer back to section \ref{section:behaviour-change}). This class accomplishes that by utilising the two systems discussed earlier in this chapter - \textit{HAR} and \textit{Self-Management}. A logical view of how this is achieved can be seen in figure \ref{fig:active-minutes-service-class-diagram}. 
     
     \begin{figure}[ht]
     \centering
@@ -150,9 +151,9 @@ This section will discuss the main and most interesting building blocks of the p
     \label{fig:active-minutes-service-class-diagram}
     \end{figure}
     
-    Implementing \textit{HarManager} as \textbf{Observable} and \textit{ActivityManager} as \textbf{Observer}  (refer back to figure \ref{fig:har_system_impl_class_diagram} and \ref{fig:self_management_system}) allows to connect the two systems so they can work together and exchange information in the service. For example, when the service is started (e.g., when a user logs is) it calls a method called \textit{onCreate()} which consequently adds \textit{ActivityManager} to the list of observers of \textit{HarManager} (see listing \ref{observer-observable-example}).
+    Implementing \textit{HarManager} as \textbf{Observable} and \textit{ActivityMonitor} as \textbf{Observer}  (refer back to figure \ref{fig:har_system_impl_class_diagram} and \ref{fig:self_management_system}) allows to connect the two systems by the \textit{Observer} pattern so they can work together and exchange information in the ActiveMinutes service. For example, when the service is started (e.g., when a user logs in) it calls a method called \textit{onCreate()} which consequently adds \textit{ActivityMonitor} to the list of observers of \textit{HarManager} (see listing \ref{observer-observable-example}). That allows \textit{ActivityMonitor} to "listen" for updates from \textit{HarManager}. Every time \textit{HarManager} recognises an activity it notifies \textit{ActivityMonitor} passing over the recognised activity. ActivityMonitor is then able to react on the recognised activity as discussed in section \ref{section:activity-monitor}. 
     
-    \begin{lstlisting}[caption= Observer-Observable pattern implementation in ActiveMinutesService,
+    \begin{lstlisting}[caption= Observer pattern implementation in ActiveMinutesService,
     frame=tlrbr,
     basicstyle=\small,
     captionpos=b,
