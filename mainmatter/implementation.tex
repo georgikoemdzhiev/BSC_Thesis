@@ -151,10 +151,27 @@ This section will discuss the main and most interesting building blocks of the p
     \label{fig:active-minutes-service-class-diagram}
     \end{figure}
     
-    Implementing \textit{HarManager} as \textbf{Observable} and \textit{ActivityMonitor} as \textbf{Observer}  (refer back to figure \ref{fig:har_system_impl_class_diagram} and \ref{fig:self_management_system}) allows to connect the two systems by the \textit{Observer} pattern so they can work together and exchange information in the ActiveMinutes service. For example, when the service is started (e.g., when a user logs in) it calls a method called \textit{onCreate()} which consequently adds \textit{ActivityMonitor} to the list of observers of \textit{HarManager}. That allows \textit{ActivityMonitor} to "listen" for updates from \textit{HarManager}. Every time \textit{HarManager} recognises an activity it notifies \textit{ActivityMonitor} passing over the recognised activity. ActivityMonitor is then able to react on the recognised activity as discussed in section \ref{section:activity-monitor}. The interested reader may refer to Appendix \ref{chapter:active-minutes-service} for a simplified version of \textit{ActiveMinutesService} class.
+    Implementing \textit{HarManager} as \textbf{Observable} and \textit{ActivityMonitor} as \textbf{Observer}  (refer back to figure \ref{fig:har_system_impl_class_diagram} and \ref{fig:self_management_system}) allows to connect the two systems by the \textit{Observer} pattern so they can work together and exchange information in the ActiveMinutes service. For example, when the service is started (e.g., when a user logs in) it calls a method called \textit{onCreate()} which consequently adds \textit{ActivityMonitor} to the list of observers of \textit{HarManager}. That allows \textit{ActivityMonitor} to "listen" for updates from \textit{HarManager}. Every time \textit{HarManager} recognises an activity it notifies \textit{ActivityMonitor} passing over the recognised activity. ActivityMonitor is then able to react on the recognised activity as discussed in section \ref{section:activity-monitor}. The interested reader can refer to Appendix \ref{chapter:active-minutes-service} for a simplified version of \textit{ActiveMinutesService} class.
 
     
-    \subsection{Application UI}  
+    \subsection{Application UI}
+    The application UI allows the user to access the collected data from the \textit{ActiveMinutesService}. Its main purpose is to visualise the data so the user can have a better understanding of their performance over time. For example, the user can see a history of the past days and check which days they have achieved their set goals. In addition, the application UI provides the user to set \gls{pa} and \gls{st} goals. In other words, the application UI, more specifically the \textit{Settings} screen, plays the important role of the Goal-Setting component (see section \ref{section:behaviour-change}). This section discusses will detail the main functions of the mobile application screens. First, the \textit{Today} screen will be addressed, followed by the \textit{History} and \textit{Settings} Screens. 
+    
+    \begin{wrapfigure}{r}{0.32\textwidth}
+    \begin{center}
+    \includegraphics[width=0.28\textwidth]{today-screen-details}
+    \end{center}
+    \caption{Today screen information}
+    \label{fig:today-screen-info}
+    \end{wrapfigure}
+    
+    \subsubsection{Today Screen}
+    This screen is the main screen of the mobile application. It provides information such as the today's activity physical activity and sedentary time amounts. For example, \textit{Today} screen provides shows the user their set \gls{pa} goal and their progress (see figure \ref{fig:today-screen-info}). 
+    
+    Since the application focuses on sedentary time and not only on active time, it provides information such as \textit{Inactivity intervals} as well. For example, information such as \textit{Longest inactivity interval}, \textit{Average inactivity interval} and how many times their target is exceeded provide the user with a clear view of how they are performing in terms of sedentary behaviour. As with \gls{pa}, the \textit{Inactivity intervals} displays the user \gls{st} goal as well \textit{30 min}. 
+
+    
+    
 
 
 
