@@ -169,14 +169,22 @@ This section will discuss the main and most interesting building blocks of the p
     \subsubsection{Today Screen}
     This screen is the main screen of the mobile application. It provides information such as the today's activity physical activity and sedentary time amounts. For example, \textit{Today} screen provides shows the user their set \gls{pa} goal and their progress (see figure \ref{fig:today-screen-info}). 
     
-    Since the application focuses on sedentary time and not only on active time, it provides information such as \textit{Inactivity intervals} as well. For example, information such as \textit{Longest inactivity interval}, \textit{Average inactivity interval} and how many times their target is exceeded provide the user with a clear view of how they are performing in terms of sedentary behaviour. As with \gls{pa}, the \textit{Inactivity intervals} displays the user \gls{st} goal as well \textit{30 min}. 
+    Since the application focuses on sedentary time and not only on active time, it provides information such as \textit{Inactivity intervals} as well. For example, information such as \textit{Longest inactivity interval}, \textit{Average inactivity interval} and how many times their target is exceeded provide the user with a clear view of how they are performing in terms of sedentary behaviour. As with \gls{pa}, the \textit{Inactivity intervals} displays the user \gls{st} goal as well \textit{30} min. 
     
     \subsubsection{History Screen}
-    Allowing the user to check previous day or week performance plays an important part in the self-management process. For example, if the user has not achieved most of the 60 minute \gls{pa} goal for the previous week, they may decide to correct the goal to 30 minute of daily \gls{pa} activity.  
-    Allowing the user to check previous day or week performance plays an important part in the self-management process. For example, if the user has not achieved most of the 60 minute \gls{pa} goal for the previous week, they may decide to correct the goal to 30 minute of daily \gls{pa} activity.  
-    Allowing the user to check previous day or week performance plays an important part in the self-management process. For example, if the user has not achieved most of the 60 minute \gls{pa} goal for the previous week, they may decide to correct the goal to 30 minute of daily \gls{pa} activity.  
-    Allowing the user to check previous day or week performance plays an important part in the self-management process. For example, if the user has not achieved most of the 60 minute \gls{pa} goal for the previous week, they may decide to correct the goal to 30 minute of daily \gls{pa} activity.  
-
+    Allowing the user to access goal-performance in the past, plays an important part in the self-management process. For example, if the user has not achieved most of the 60 minute \gls{pa} goals for the previous week, they may decide to correct the goal to 30 minute of daily \gls{pa} activity instead. The History screen allows the user to clearly see what goals they are achieving. 
+    
+    \begin{wrapfigure}[11]{r}{0.29\textwidth}
+    \begin{center}
+    \includegraphics[width=0.27\textwidth]{history-screen-details}
+    \end{center}
+    \caption{History screen list item snippet}
+    \label{fig:history-screen-list-item}
+    \end{wrapfigure}
+    
+    As shown in the History screen snippet in figure \ref{fig:history-screen-list-item}, the user can easily see if they achieved a \gls{pa} or \gls{st} (i.e. \gls{mci}) goal by looking at the colour of the specific list item for a given day. Every list item is composed of a \textit{title} to show the date; two progress bars to show the progress of the \gls{pa} and \gls{st} (i.e. \gls{mci}) goals and a pair of "progress/goal" text labels that show the progress of goals in numerically.
+    
+    The \textbf{legend} at the top of the screen helps the user make a connection between the progress bar colour and the "progress/goal" pair. For example, in the single list item shown in the figure at the right-hand side we can see that the \gls{pa} goal is achieved since the current progress of the goal "69" is greater than the goal "60" minutes. Thus the colour of this list item's \gls{pa} progress bar is set to "GREEN" (i.e., "Goal Achieved"). On the other hand, the progress bar's colour showing the progress/goal pair for the \gls{mci} goal is set to "GREY" since the \gls{st} goal has not been achieved (i.e. the progress "98" is creater than the user set \gls{mci} "90").
     
     
 
