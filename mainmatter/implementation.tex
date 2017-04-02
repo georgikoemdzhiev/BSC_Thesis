@@ -153,7 +153,7 @@ This section will discuss the main and most interesting building blocks of the p
     
     Implementing \textit{HarManager} as \textbf{Observable} and \textit{ActivityMonitor} as \textbf{Observer}  (refer back to figure \ref{fig:har_system_impl_class_diagram} and \ref{fig:self_management_system}) allows to connect the two systems by the \textit{Observer} pattern so they can work together and exchange information in the ActiveMinutes service. For example, when the service is started (e.g., when a user logs in) it calls a method called \textit{onCreate()} which consequently adds \textit{ActivityMonitor} to the list of observers of \textit{HarManager}. That allows \textit{ActivityMonitor} to "listen" for updates from \textit{HarManager}. Every time \textit{HarManager} recognises an activity it notifies \textit{ActivityMonitor} passing over the recognised activity. ActivityMonitor is then able to react on the recognised activity as discussed in section \ref{section:activity-monitor}. The interested reader can refer to Appendix \ref{chapter:active-minutes-service} for a simplified version of \textit{ActiveMinutesService} class.
     
-    \begin{wrapfigure}[18]{R}{0.32\textwidth}
+    \begin{wrapfigure}[18]{R}{0.29\textwidth}
     \begin{center}
     \includegraphics[width=0.29\textwidth]{today-screen-details}
     \end{center}
@@ -176,7 +176,7 @@ This section will discuss the main and most interesting building blocks of the p
     
     \begin{wrapfigure}[11]{r}{0.29\textwidth}
     \begin{center}
-    \includegraphics[width=0.27\textwidth]{history-screen-details}
+    \includegraphics[width=0.29\textwidth]{history-screen-details}
     \end{center}
     \caption{History screen list item snippet}
     \label{fig:history-screen-list-item}
@@ -186,12 +186,25 @@ This section will discuss the main and most interesting building blocks of the p
     
     The \textbf{legend} at the top of the screen helps the user make a connection between the progress bar colour and the "progress/goal" pair. For example, in the single list item shown in the figure at the right-hand side we can see that the \gls{pa} goal is achieved since the current progress of the goal "69" is greater than the goal "60" minutes. Thus the colour of this list item's \gls{pa} progress bar is set to "GREEN" (i.e., "Goal Achieved"). On the other hand, the progress bar's colour showing the progress/goal pair for the \gls{mci} goal is set to "GREY" since the \gls{st} goal has not been achieved (i.e. the progress "98" is creater than the user set \gls{mci} "90").
     
+    \begin{wrapfigure}[11]{r}{0.29\textwidth}
+    \begin{center}
+    \includegraphics[width=0.29\textwidth]{settings-screen-details}
+    \end{center}
+    \caption{Settings screen snippet}
+    \label{fig:settings-screen-details}
+    \end{wrapfigure}
+    
+    \subsubsection{Settings Screen}
+    The settings screen enables the user to change certain settings as well as plays the role of the Goal-Setting component discussed in section \ref{section-goal-setting-component}. Small snippet of the \gls{ui} design of this screen can be seen in figure \ref{fig:settings-screen-details}
+    
+    As mentioned in the specifications chapter (see section \ref{subsection:monitoring-component}), the user is able to set a time window where no monitoring occurs - \textit{Sleeping Hours}. This interval normally starts from about \textit{8pm} till \textit{8am}.
+    
+    This screen offers the user the option to switch off \gls{st} notifications when they do not want to receive any (e.g. during a business meeting). In addition, the \textit{Settings} screen offers the user to change their \gls{pa} and \gls{st} goals. The default values for the former and latter are 30 and 60 minutes respectively. The complete UI design of this screen can be found in Appendix \ref{chapter:screen-design}.
     
 
 
 
 
-    
     
     
     
