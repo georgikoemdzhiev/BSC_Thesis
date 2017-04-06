@@ -27,39 +27,39 @@ To help with the naming conventions through the reminder of this paper, a produc
     
     \subsection{Goal-Setting Component}
     \label{section-goal-setting-component}
-    As it was mentioned in Chapter \ref{Chapter:Literature-Review},  goal-setting is an important part of the behaviour change process. This component's requirements are mainly derived from the background research. Its software implementation allows the user to set goals which is the first step towards better lifestyle.
+    Goal-setting is an important aspect of the self-management and behaviour change process. This component's requirements have been informed by the British Heart Foundation \citep[14]{townsend2015} e.g., minimum of 30 minutes \gls{pa}. The software implementation allows the user to set goals which becomes a target in the first step towards behaviour change and better lifestyle.
     
     \begin{enumerate}
-        \item \gls{gsc} shall allow the user to set \gls{pa} goals
+        \item \gls{gsc} shall allow the user to set a \gls{pa} goal
         \begin{enumerate}
             \item \gls{gsc} shall provide list of recommended \gls{pa} goals
-            \item \gls{gsc} shall allow the user to set custom \gls{pa} goals
+            \item \gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do that 
         \end{enumerate}
-        \item \gls{gsc} shall allow the user to set Sedentary Time (\gls{st}) goals
+        \item \gls{gsc} shall allow the user to set a Sedentary Time (\gls{st}) goal
         \begin{enumerate}
-            \item \gls{gsc} shall allow the user to set the maximum duration of \gls{st} before a reminding notification is sent 
+            \item \gls{gsc} shall allow the user to set a Maximum Continuous Inactivity (MCI) before a reminding notification is sent 
         \end{enumerate}
     \end{enumerate}
     
     
     \subsection{Monitoring component}
     \label{subsection:monitoring-component}
-    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current mobile devices and applications.
+    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current mobile devices and client feedback.
     
     \begin{enumerate}
         \item The \gls{mc} component shall classify physical activities
         \begin{enumerate}
             \item HAR component shall recognise the following activities:
             \begin{enumerate}
-                \item walking
-                \item running
-                \item cycling
+                \item walking;
+                \item running;
+                \item cycling;
                 \item static
             \end{enumerate}
         \end{enumerate}
-        \item The \gls{mc} component shall analyse user's \gls{pa} and \gls{st} amounts in real time
+        \item The \gls{mc} component shall analyse and aggregate user's \gls{pa} and \gls{st} amounts in real time
             \begin{enumerate}
-                \item \gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised
+                \item \gls{mc} shall the increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised
             \end{enumerate}
         \item The \gls{mc} shall personalise \gls{har}'s classifier
             \begin{enumerate}
@@ -67,6 +67,9 @@ To help with the naming conventions through the reminder of this paper, a produc
             \end{enumerate}
             
         \item \gls{mc} shall keep history of previously accumulated \gls{pa} and \gls{st} amounts
+            \begin{enumerate}
+                \item The system shall allow the user to group the collected data in "Hourly" and "Weekly" representation
+            \end{enumerate}
         
         \item The user shall be able to set "Sleeping Hours", time interval during which no measurement of \gls{pa} or \gls{st} should occur
       
@@ -76,11 +79,14 @@ To help with the naming conventions through the reminder of this paper, a produc
     \label{section:feedback-component}
     The \gls{fc} is responsible for sending notifications to the user. It can provide important information such as when a previously set goal is attained or reminder for the user that they are spending too much static time.
     \begin{enumerate}
-        \item \gls{fc} shall notify the user when they are being sedentary for too long (e.g. an hour)
+        \item \gls{fc} shall notify the user when they are being sedentary for 1 hour as recommended by \citet[]{swartz2011}
         
         \item \gls{fc} shall notify the user when a previously set goal is attained (e.g. being active for 30 minutes)
         
         \item \gls{fc} shall not send notifications during "Sleeping Hours" time interval
+            \begin{enumerate}
+                \item The system shall allow the user to set the \textit{Sleeping Hours} interval's start and stop time e.g., 20:00 - 8:00
+            \end{enumerate}
     \end{enumerate}
 
 \section{Non-functional Requirements}
@@ -92,35 +98,32 @@ The mobile application proposed in this work has to comply with a number of addi
     The accuracy of the system shall be above 90\% so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily readings. Consequently, the user may be doing less physical activity if they are notified incorrectly for attained goal.
     
     \subsection{Battery consumption}
-    Since the resources of every portable device (i.e. mobile phone) are constrained, the system shall be designed so that it consumes reasonable amount of battery power. The device shall be able to function without the need for a charge for at least 12 hours. For example, the user must not need to charge the device in the middle of the day since that renders the \gls{mc} of the application useless (the application cannot measure \gls{pa} or \gls{st} when the device is not carried by the user).
+    Since the resources of every portable device (i.e. mobile phone) are constrained, the system shall be designed so that it consumes reasonable amount of battery power. The device shall be able to function without the need for a charge for at least 12 hours. For example, the user must not need to charge the device in the middle of the day as this would prevent the \gls{mc} from monitoring activity.
     
     \subsection{Security}
     The mobile application shall store user data only on the system in order to minimise the risk of data breach. In addition, the following considerations have been taken into account:
     
     \begin{enumerate}
-        \item The system shall provide protection of user's data
-            \begin{enumerate}
-                \item The system shall show authentication screen before showing any sensitive data
-                \item The system shall encrypt the data stored in a local database
-            \end{enumerate}
+        \item The system shall show authentication screen before showing any data such as how active the user has been during the day
+        \item The system shall encrypt the data stored in a local database
     \end{enumerate}
     
     \subsection{System Quality Attributes}
     \label{section:system-quality-attributes}
         \subsubsection{Adaptability}
-        Modern mobile applications should be able to quickly adapt to new requirements as the market changes. That is why the system design implements the \gls{mvp} software development pattern (discussed in the following chapter) which increases the ability of the system to incorporate new features easily as the system is separated into loosely coupled logical parts.
+        Modern mobile applications should be able to quickly adapt to new requirements as the market changes. The intention is to achieve adaptability by implementing the \gls{mvp} software development pattern. That allows the system to incorporate new features easily as the system is separated into loosely coupled logical parts.
         
         \subsubsection{Scalability}
         The system should be scalable to accommodate large amounts of data collected by different users. For example, the system should be able to handle the data for at least 5 users.
         
         \subsubsection{Modularity}
-        As mentioned above, the system follows the \gls{mvp} software pattern which allows for splitting the system into different logical parts. For example, each mobile screen's logic is encapsulated in a separate directory which can be interchanged easily without affecting the integrity of the system.  
+        As living in a fast-changing world, a user requirements can change quickly in a short period of time. Thus, the system should be able to change or replace features so it can adapt to change. For example, each mobile screen's logic is encapsulated in a separate directory which can be interchanged easily without affecting the integrity of the system.  
         
         \subsubsection{Testability}
-        To assure that the system works as intended, the system shall be tested by both assertions and Quality Assurance tests. 
+        Testing any system is crucial since it allows the discovery of unwanted system behaviours. To assure that the system works as intended, the system shall be tested by both assertions and Quality Assurance tests. 
         
         \subsubsection{Maintainability}
-        The system shall be designed in such a way so that it allows for easy debugging and evolution. For example, extending the system by adding new features.
+        As with every software product, the need for maintains is unavoidable. Thus, to ease this process the system shall be designed in such a way so that it allows for easy evolution. For example, extending the system by adding new features.
         
         \subsubsection{Robustness}
         Since the the system requires a constant monitoring of the user (e.g. collecting contextual data), it is imperative that the system encompass as many points of failure as possible. Thus the system shall be taken through series of QA tests as well as unit tests to minimise the points of failure. 
