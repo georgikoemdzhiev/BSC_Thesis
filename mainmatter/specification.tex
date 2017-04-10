@@ -79,14 +79,14 @@ To help with the naming conventions through the reminder of this paper, a produc
     \label{section:feedback-component}
     The \gls{fc} is responsible for sending notifications to the user. It can provide important information such as when a previously set goal is attained or reminder for the user that they are spending too much static time.
     \begin{enumerate}
-        \item \gls{fc} shall notify the user when they are being sedentary for 1 hour as recommended by \citet[]{swartz2011}
+        \item \gls{fc} shall notify the user when they are being sedentary for 1 hour (or the value set by the user) as recommended by \citet[]{swartz2011}
         
         \item \gls{fc} shall notify the user when a previously set goal is attained (e.g. being active for 30 minutes)
         
-        \item \gls{fc} shall not send notifications during "Sleeping Hours" time interval
-            \begin{enumerate}
-                \item The system shall allow the user to set the \textit{Sleeping Hours} interval's start and stop time e.g., 20:00 - 8:00
-            \end{enumerate}
+        \item \gls{fc} shall not send notifications during the "Sleeping Hours" time interval
+        
+        \item \gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week
+           
     \end{enumerate}
 
 \section{Non-functional Requirements}
