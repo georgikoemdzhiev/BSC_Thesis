@@ -27,13 +27,13 @@ To help with the naming conventions through the reminder of this paper, a produc
     
     \subsection{Goal-Setting Component}
     \label{section-goal-setting-component}
-    Goal-setting is an important aspect of the self-management and behaviour change process. This component's requirements have been informed by the British Heart Foundation \citep[14]{townsend2015} e.g., minimum of 30 minutes \gls{pa}. The software implementation allows the user to set goals which becomes a target in the first step towards behaviour change and better lifestyle.
+    Goal-setting is an important aspect of the self-management and behaviour change process. This component's requirements have been informed by the British Heart Foundation \citep[14]{townsend2015} e.g., a minimum of 30 minutes of \gls{pa} is used as a guideline. The software implementation allows the user to set goals which becomes a target in the first step towards behaviour change and better lifestyle.
     
     \begin{enumerate}
         \item \gls{gsc} shall allow the user to set a \gls{pa} goal
         \begin{enumerate}
             \item \gls{gsc} shall provide list of recommended \gls{pa} goals
-            \item \gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do that 
+            \item \gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so 
         \end{enumerate}
         \item \gls{gsc} shall allow the user to set a Sedentary Time (\gls{st}) goal
         \begin{enumerate}
@@ -44,7 +44,7 @@ To help with the naming conventions through the reminder of this paper, a produc
     
     \subsection{Monitoring component}
     \label{subsection:monitoring-component}
-    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current mobile devices and client feedback.
+    The main purpose of the \gls{mc} is to continuously recognise activities and analyse the levels of \gls{pa} and \gls{st}. The following requirements have been derived from analysing past and current mobile devices as well as from discussions with the client.
     
     \begin{enumerate}
         \item The \gls{mc} component shall classify physical activities
@@ -83,7 +83,7 @@ To help with the naming conventions through the reminder of this paper, a produc
         
         \item \gls{fc} shall notify the user when a previously set goal is attained (e.g. being active for 30 minutes)
         
-        \item \gls{fc} shall not send notifications during the "Sleeping Hours" time interval
+        \item \gls{fc} shall not send notifications during the user set "Sleeping Hours" time interval (e.g. 20:00 - 8:00).
         
         \item \gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week
            
@@ -95,7 +95,7 @@ The mobile application proposed in this work has to comply with a number of addi
     % \subsection{Limitations}
     
     \subsection{Accuracy}
-    The accuracy of the system shall be above 90\% so that misclassification of activities are avoided or minimised. For example, classifying "walking" as "static" would lead to incorrect \gls{pa} daily readings. Consequently, the user may be doing less physical activity if they are notified incorrectly for attained goal.
+    The accuracy of the system would not be measured in terms of the classification accuracy of the classifier but on the \textit{Active}/\textit{Static} type of activity error rate. The system shall minimise the cases where activity of type \textit{Active} is classified as type \textit{Static} and vice versa since that would lead to incorrect \gls{pa} daily readings. Consequently, the user may be doing less physical activity if they are notified incorrectly for attained goal. Thus, the above-mentioned error rate shall be less then 10\%. This number has been chosen after a series of calculations. For example, if we take into account the minimum goal that the user can set - 30 minutes \gls{pa} and suppose that 10\% of that amount are errors that gives us 27 minutes of \gls{pa} (30 - 30*0.1) which is very close to the initial 30 minutes goal.
     
     \subsection{Battery consumption}
     Since the resources of every portable device (i.e. mobile phone) are constrained, the system shall be designed so that it consumes reasonable amount of battery power. The device shall be able to function without the need for a charge for at least 12 hours. For example, the user must not need to charge the device in the middle of the day as this would prevent the \gls{mc} from monitoring activity.
