@@ -1,7 +1,15 @@
 \chapter{Evaluation}
 The purpose of this chapter is to evaluate how the developed mobile application effective is in respect to applying the behaviour change theory discussed in Chapter \ref{Chapter:Literature-Review}. To examine that, a survey was carried out on several university students. The survey results will be discussed first. In addition, the mobile application will be compared against the initial requirements discussed in chapter  \ref{Chapter:Specification}.
 
+\section{Acceptance Testing}
+Acceptance testing is a key part of the software development process. It evaluates if the software conforms with the client specified software requirements. Consequently, it is determined if the end-product is capable of performing the specified functionality. The following sub-components of the system will be discussed in terms of Acceptance testing, namely \textit{Goal-Setting Component} (\gls{gsc}), \textit{Monitoring Component} (\gls{mc}) and \textit{Feedback Component} (\gls{fc}).
+
+\subsection{Goal-Setting Component}
+All of the 3 specifications for this component were implemented successfully. The complete list of the implemented requirements can be seen in Appendix \ref{chapter:am-acceptance}.
+
+The first requirement - "\gls{gsc}" shall provide list of recommended \gls{pa} goals - was implemented by utilising an Android framework component called \textit{Dialog} \citep{androiddialogs_2017}. A Dialog window is presented to the user so they can choose their \gls{pa} goal in minutes (e.g. 10, 20, 30, 60).
+
+The second requirement \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented during the \textit{initial setup} (e.g. when a new user registers with the app) discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens which offer the user the option to set the initial values of the \gls{pa}, \gls{mci} (informed by the literature review e.g., the guidelines) as well as the \textit{Sleeping Hours} (SH) time interval, default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \gls{shti} is set to 8pm to 8am.
 
 \section{Survey results}
 
-\section{Acceptance Testing}
