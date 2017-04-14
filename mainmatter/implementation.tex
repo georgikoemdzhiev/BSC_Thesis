@@ -104,6 +104,7 @@ This section discusses the implementation of self-management system. Its respons
     As can be seen in figure \ref{fig:self_management_system} a reference of this class is used in \textit{ActivityMonitor}. The role of \textbf{DataManager} is to provide methods of manipulating the underlining database so that it is relevant to the needs of \textit{ActivityMonitor}. For example, \textit{ActivityMonitor} receives a recofnised activity of type \textit{Active} (i.e. walking), \textit{ActivityMonitor} calls \textit{incActiveTime()} and \textit{clearCurrentInacInterval()} consequently. The former method increments the user's active time and the latter clears the current inactivity interval to 0.
     
     \subsubsection{FeedbackProvider}
+    \label{section:feedback-provider}
     This class is responsible for providing information to the user in the form of Android notifications\footnote{\url{https://developer.android.com/reference/android/app/Notification.html}}. For example, when \textit{ActivityMonitor} detects that the user has reached their daily maximum continious interval (set sedentary goal) it would call \textit{provideProlongedInactivityFeedback()} method of the \textit{FeedbackProvider}.
     
     Notifying the user of past events specially associated with user's inactivity is not very helpful from a self-management perspective. Thus, the class has been designed to include two methods that are called at 80\% achieved goal progress, namely \textit{provideEncouragingFeedback()} and \textit{provideWarningProlongedInactivityFeedback()}. For example, if the \gls{st} goal i.e., maximum continious inactivity (MCI) is set to be 60 minutes per day. The user will receive a notification at 48 minutes of continious inactivity giving the user a warning that they are approaching their \gls{mci}. 
@@ -215,6 +216,18 @@ This section will discuss the main and most interesting building blocks of the p
     When a new user registers with the application, an initial-setup screens are shown. This set of screens allow the user to set their \textit{SleepingHours} time interval; \textit{\gls{pa}} and \textit{\gls{mci}} goals upon the first launch of the application.
 
     In addition, the screens provide an important information to the user informed by the the project research such as the recommended \gls{pa} and \gls{st} guidelines per day. For example, the \textit{SET \gls{pa} } screen shown in figure \ref{fig:set-pa-goal-screen-snippet} tells the user that the desired amount of \gls{pa} activity is one hour. Consequently, the user can make a better decision regarding setting their daily \gls{pa} goal. All of the \textit{initial-setup} screens can be seen in Appendix \ref{chapter:screen-design}.
+    
+    \newpage
+     \begin{wrapfigure}[10]{r}{0.26\textwidth}
+    \begin{center}
+    \includegraphics[width=0.26\textwidth]{performance-meeting-screen-design-detail}
+    \end{center}
+    \caption{Performance Meeting screen snippet}
+    \label{fig:performance-meeting-screen-snippet}
+    \end{wrapfigure}
+    
+    \subsubsection{Performance Meeting screen}
+    To provide a better feedback e.g., not just sending notifications when prolonged inactivity is detected, the system offers an additional feature. At the end of every week (e.g. Sunday) the user would receive a notification. When tapped, the \textit{Performance Meeting} screen will be shown. It provides goal-performance information regarding user's \textit{Activity} and \textit{Inactivity}. For example, the screen shows how many times the user has achieved a \gls{pa} goal and how many times the user exceeded their \gls{mci} target. Consequently, the user is able to see how well they perform and thus make an informed decision when changing their \gls{pa} and \gls{st} goals. A snippet of the \gls{ui} design of this screen can be seen in figure \ref{fig:performance-meeting-screen-snippet}, the complete design can be seen in Appendix \ref{chapter:screen-design}.
     
     
 

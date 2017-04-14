@@ -5,11 +5,33 @@ The purpose of this chapter is to evaluate how the developed mobile application 
 Acceptance testing is a key part of the software development process. It evaluates if the software conforms with the client specified software requirements. Consequently, it is determined if the end-product is capable of performing the specified functionality. The following sub-components of the system will be discussed in terms of Acceptance testing, namely \textit{Goal-Setting Component} (\gls{gsc}), \textit{Monitoring Component} (\gls{mc}) and \textit{Feedback Component} (\gls{fc}).
 
 \subsection{Goal-Setting Component}
-All of the 3 specifications for this component were implemented successfully. The complete list of the implemented requirements can be seen in Appendix \ref{chapter:am-acceptance}.
+All of the 3 specifications for this component were implemented successfully. The list of the implemented requirements can be seen in Appendix \ref{chapter:am-acceptance}.
 
 The first requirement - "\gls{gsc}" shall provide list of recommended \gls{pa} goals - was implemented by utilising an Android framework component called \textit{Dialog} \citep{androiddialogs_2017}. A Dialog window is presented to the user so they can choose their \gls{pa} goal in minutes (e.g. 10, 20, 30, 60).
 
-The second requirement \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented during the \textit{initial setup} (e.g. when a new user registers with the app) discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens which offer the user the option to set the initial values of the \gls{pa}, \gls{mci} (informed by the literature review e.g., the guidelines) as well as the \textit{Sleeping Hours} (SH) time interval, default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \gls{shti} is set to 8pm to 8am.
+The second requirement \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented in the \textit{initial setup} set of screens discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens (which offer options such as setting the \gls{pa}, \gls{mci} as well as the \gls{shti}) default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \gls{shti} is set to 8pm to 8am.
+
+\subsection{Monitoring component}
+Four out of the five initially set features were fully implemented. The list of the implemented requirements can be seen in Appendix \ref{chapter:am-acceptance}.
+
+First of those features \textit{HAR component shall recognise 4 activities(walking, running, cycling and static)} was implemented by gathering activity data from fellow university students and training a model to recognise the above-mentioned activities.
+
+As far as \textit{\gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised} is concerned, this feature was implemented in the \textit{ActivityMonitor} class (see section \ref{section:activity-monitor}).
+
+\textit{The system shall allow the user to group the collected data in "Daily" and "Weekly" representation}. This feature was implemented in the \textit{History} screen of \textit{ActiveMinutes}. The \gls{ui} of this screen includes \textit{DAILY} and \textit{WEEKLY} buttons allowing the user to switch between both representation of the collected data, accordingly.
+
+\textit{The user shall be able to set the \textit{Sleeping Hours Time Interval} (\gls{shti}) during which no measurement of \gls{pa} or \gls{st} should occur} was a feature implemented in the \textit{Settings} screen. The \gls{ui} of this screen provides the user with the option to change their \gls{shti} by tapping on the appropriate menu item and choosing the desirable start and end times.
+
+There were some features of the system that were not implemented since it was determined to be too complex given the project time constrains. One of those feature was \textit{The \gls{mc} shall personalise \gls{har}'s classifier}. It was first discussed in the Design chapter (see section \ref{section:classifier-personal-service}). That implementation was designed as Android \textit{Service} which uses the gathered with time and filtered by the classifier's confidence level (e.g. above 80\% - to filter only the recognised activities with high confidence), combine them with the general data and produce a personalised model to replace the general one. As a result, the recognition accuracy of the classifier could be improved greatly as demonstrated by \citet[376]{arapakis_athanasakos_jose_2010}.
+
+\subsection{Feedback Component}
+As far as the \gls{fc} is concerned, a total of 3 features were successfully implemented. One of the initial requirements of the \gls{fc} was not implement due to the project's time constrains. \textit{FeedbackProvider} (see section \ref{section:feedback-provider}) represents the \gls{fc} implementation system-wise. All of the features will be briefly discussed bellow.
+
+\textit{\gls{fc} shall notify the user when they are being sedentary for 1 hour} allows the user to be notified for a prolonged sedentary time. This feature was successfully implemented by utilising Android's \textit{Notification} API. In addition, this API is used to satisfy the second feature as well, namely \textit{\gls{fc} shall notify the user when a previously set goal is attained}. This feature allows the user to be notified when they achieve their daily goal (e.g. 30 minutes of \gls{pa}).
+
+Another feature implemented feature - \textit{\gls{fc} shall not send notifications during the user set "Sleeping Hours" time interval} makes sure that the system stops monitoring user's \gls{pa} and \gls{st} levels when \gls{shti} is triggered. 
+
+Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability. 
 
 \section{Survey results}
 

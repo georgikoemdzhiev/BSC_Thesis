@@ -133,6 +133,7 @@ The design process has gone through many iterations to ensure the best possible 
             Another important responsibility of the this service is to collect personal data. This data is used later on for classifier personalisation (e.g. adapting the general classifier so it better recognises user activities).
             
             \subsubsection{ClassifierPersonalisationService}
+            \label{section:classifier-personal-service}
             The sole purpose of this service is to personalise the general classifier that is included in the application initially. The service is started by the above-mentioned \textit{ActiveMinutesService} service when enough labeled data is collected. For example, the service is executed when there are x100 instances of \textit{walking}, \textit{running}, \textit{cycling} and \textit{static} activity training data. Since it will run once in the lifetime of the application on the device, this service is implemented as a special kind of Service called \textit{IntentService}. It allows for executing heavy tasks such as training a classifier in a worker thread so the application's main UI thread is not affected.
             
             \subsubsection{DataCollectionService}
