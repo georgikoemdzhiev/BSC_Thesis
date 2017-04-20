@@ -1,0 +1,161 @@
+\chapter{Functional Testing}
+\label{chapter:functional-testing}
+
+\section{Navigational}
+   \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user opens the application for the first time
+    & The system should should the authentication screen to the user.
+    & The system shows correctly the authentication screen allowing the user to register with the system.
+    & Pass
+    \\ \hline
+    2
+    & The user navigates to the \textit{Login} screen and performs a right-to-left swipe gesture.
+    & The system  should shows the \textit{Signup} screen to the user.
+    & The system works as expected.
+    & Pass
+    \\ \hline
+    3
+    & The user presses the "Next"  (e.g. the arrow symbol) button located in the bottom right corner of the \textit{Initial setup} screens.
+    & The system should advance the user to the next \textit{Initial setup} screen.
+    & The system correctly updates the screen transfers the user to the next screen.
+    & Pass
+    \\ \hline
+    4
+    & The user performs a right-to-left swipe gesture during the \textit{Initial Setup} process.
+    & The system should show the next setup screen.
+    & The system correctly updates the screen and transfers the user to the next screen.
+    & Pass
+    \\ \hline
+    5
+    & The user finishes the \textit{Initial Setup} process by pressing the \textit{"DONE"} button.
+    & The system should show the \textit{Today} screen to the user.
+    & The system works as expected and transfers the user to the \textit{Today} screen.
+    & Pass
+    \\ \hline
+    6
+    & The user navigates to the \textit{Today} screen and performs a left-to-right swipes gesture from the edge of the screen.
+    & The system should show the \textit{Navigational drawer} to the user.
+    & The system navigational drawer is correctly shown to the user.
+    & Pass
+    \\ \hline
+    7
+    & The user taps on the "Hamburger icon" at the top left corner of the screen.
+    & The system should show the \textit{Navigational drawer} to the user.
+    & The navigational drawer is correctly shown to the user.
+    & Pass
+    \\ \hline
+    8
+    & The user opens the \textit{Navigational drawer} of the application and selects the \textit{Today} menu item.
+    & The system should show the "Today" screen to the user.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    9
+    & The user opens the \textit{Navigational drawer} of the application and selects the \textit{History} menu item.
+    & The system should show the "History" screen to the user.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    10
+    & The user opens the \textit{Navigational drawer} of the application and selects the \textit{Settings} menu item.
+    & The system should show the "Settings" screen to the user.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    11
+    & The user opens the \textit{Navigational drawer} of the application and selects \textit{Log Out} menu item.
+    & The system should show the "Login" screen to the user.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    
+ \end{longtabu}
+ 
+\section{Goal-setting (Initial Setup)}
+The following functional tests are performed during the \textit{Initial Setup} process (e.g. upon first sign-up of a new user).
+ \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user presses the "Set PA Goal" button and selects a value from the list.
+    & The system should accept the user's input and show a confirmation message.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    2
+    & The user presses the "Set MCI" button and selects a value from the list.
+    & The system should accept the user's input and show a confirmation message.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    3
+    & The user presses the "Set Sleeping Hours" button
+    & The system should show a date picker dialog.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    4
+    & The user selects a \textit{From} and \textit{To} value from the \textit{Sleeping Hours} date picker and presses the "OK" button.
+    & The system should accept the user input and show a confirmation message.
+    & Works as expected.
+    & Pass
+    \\ \hline
+\end{longtabu}
+
+\section{Goal-setting (Settings screen)}
+The following functional tests are performed in the \textit{Settings} screen.
+
+ \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user presses the "Physical Activity goal" menu item and selects a value from the list.
+    & The system should accept the user's input and show a confirmation message.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    2
+    & The user presses the "Sedentary goal" menu item and selects a value from the list.
+    & The system should accept the user's input and show a confirmation message.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    3
+    & The user presses the "Sleeping Hours" menu item.
+    & The system should show a date picker dialog.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    4
+    & The user selects a \textit{From} and \textit{To} value from the \textit{Sleeping Hours} date picker and presses the "OK" button.
+    & The system should accept the user input and show a confirmation message.
+    & Works as expected.
+    & Pass
+    \\ \hline
+\end{longtabu}
+ 
+
