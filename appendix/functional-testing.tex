@@ -116,6 +116,12 @@ The following functional tests are performed during the \textit{Initial Setup} p
     & The system should accept the user input and show a confirmation message.
     & Works as expected.
     & Pass
+    \\\hline
+    5
+    & The user finishes the \textit{Initial Setup} by pressing the "DONE" button.
+    & The system should show the values set during the \textit{Initial Setup} throughout the application i.e., \textit{Today} and \textit{Settings} screens.
+    & Works as expected.
+    & Pass
     \\ \hline
 \end{longtabu}
 
@@ -139,23 +145,140 @@ The following functional tests are performed in the \textit{Settings} screen.
     & Pass
     \\ \hline
     2
+    & The user presses their presses the "Physical Activity goal" menu item and selects a value from the list.
+    & The system should update the \gls{ui} of the \textit{Today} screen to reflect the change.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    3
     & The user presses the "Sedentary goal" menu item and selects a value from the list.
     & The system should accept the user's input and show a confirmation message.
     & Works as expected.
     & Pass
     \\ \hline
-    3
+    4
+    & The user presses their presses the "Physical Activity goal" menu item and selects a value from the list.
+    & The system should update the \gls{ui} of the \textit{Today} screen to reflect the change.
+    & Works as expected.
+    & Pass
+    \\ \hline
+    5
     & The user presses the "Sleeping Hours" menu item.
     & The system should show a date picker dialog.
     & Works as expected.
     & Pass
     \\ \hline
-    4
+    6
     & The user selects a \textit{From} and \textit{To} value from the \textit{Sleeping Hours} date picker and presses the "OK" button.
     & The system should accept the user input and show a confirmation message.
     & Works as expected.
     & Pass
     \\ \hline
 \end{longtabu}
- 
 
+\section{Monitoring Activity}
+The following functional tests check if the system monitors \gls{pa} correctly.
+
+ \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user starts the mobile application and performs 5 minutes of \textbf{walking}.
+    & The system should recognise that the user is performing \gls{pa} and increments \textit{Active} time. 
+    & Works as expected e.g., updates the \gls{ui} by adding 5 minutes to the \gls{pa} progress bar in \textit{Today} \& \textit{History} screens.
+    & Pass
+    \\ \hline
+    2
+    & The user starts the mobile application and performs 5 minutes of \textbf{running}.
+    & The system should recognise that the user is performing \gls{pa} and increments \textit{Active} time. 
+    & Works as expected e.g., updates the \gls{ui} by adding 5 minutes to the \gls{pa} progress bar in \textit{Today} \& \textit{History} screens.
+    & Pass
+    \\ \hline
+    3
+    & The user starts the mobile application and performs 5 minutes of \textbf{cycling}.
+    & The system should recognise that the user is performing \gls{pa} and increments \textit{Active} time. 
+    & Works as expected e.g., updates the \gls{ui} by adding 5 minutes to the \gls{pa} progress bar in \textit{Today} \& \textit{History} screens.
+    & Pass
+    \\ \hline
+\end{longtabu}
+
+
+\section{Monitoring Inactivity}
+
+ The following functional tests check if the system monitors \gls{st} correctly.
+
+ \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user starts the mobile application and deletes all data in the database. Next, the user sits on a chair for 5 minutes.
+    & The system should recognise that the user is static and increment \textit{Static} time. 
+    & Works as expected e.g., updates the \gls{ui} by adding 5 minutes to the \textit{"Longest inactivity interval"} text view located in the \textit{Today}.
+    & Pass
+    \\ \hline
+  \end{longtabu}
+  
+ \section{Notifications}
+ This section of the functional testing checks if the system sends notifications to the user correctly.
+  \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user achieves their goal of 30 minutes of \gls{pa}
+    & The system should send a notification to the user at 80\% achieved goal to motivate the user as well as when reaching the goal.
+    & Works as expected. The user receives the above-mentioned notifications.
+    & Pass
+    \\ \hline
+    2
+    & The user reaches their target of 30 minutes of \gls{st} (or \gls{mci})
+    & The system should send a notification to the user at 80\% of the reached target to notify the user as well as when reaching the target.
+    & Works as expected. The user receives the above-mentioned notifications.
+    & Pass
+    \\ \hline
+  \end{longtabu}
+  
+ \section{Other}
+    \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user navigates to the \textit{Settings} screen and selects the \textit{"Reset saved data"} menu item.
+    & The system should a dialog window asking the user to confirm the action
+    & Works as expected.
+    & Pass
+    \\ \hline
+    2
+    & The user confirms the above-mentioned action by pressing the \textit{"OK"} button.
+    & The system should delete the saved data in the database and that should be reflected by the \textit{Today} and \textit{History} screens
+    & Works as expected.
+    & Pass
+    \\ \hline
+  \end{longtabu}
