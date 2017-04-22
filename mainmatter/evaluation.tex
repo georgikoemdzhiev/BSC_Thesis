@@ -1,5 +1,5 @@
 \chapter{Testing and Evaluation}
-The purpose of this chapter is to evaluate how effective is the developed mobile application in respect to applying the behaviour change theory discussed in Chapter \ref{Chapter:Literature-Review}. To examine that, a survey was carried out on several university students. Also, the system will be compared against the initial requirements discussed in chapter \ref{Chapter:Specification}. This comparison called \textit{Acceptance testing} will be discussed first followed by a summary of the survey results.
+The purpose of this chapter is to evaluate how effective is the developed mobile application in respect to applying the behaviour change theory discussed in Chapter \ref{Chapter:Literature-Review}. To examine that, a survey was carried out on several university students. Also, the system will be compared against the initial requirements discussed in chapter \ref{Chapter:Specification}. This comparison called \textit{Acceptance testing} will be discussed first followed by Functional and Usability testing discussion. Finally, results from a survey gathered from people who used the system for an entire day will be discussed.
 
 
 
@@ -36,6 +36,42 @@ The first requirement - \textit{\gls{fc} shall notify the user when they are bei
 Another feature implemented feature - \textit{\gls{fc} shall not send notifications during the user set "Sleeping Hours" time interval} makes sure that the system stops monitoring user's \gls{pa} and \gls{st} levels when \textit{Sleeping Hours} time interval is entered. 
 
 Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability. The list with all of the requirements of this component can be seen in Appendix \ref{chapter:am-acceptance}.
+
+\section{Functional Testing}
+This is a quality assurance (QA) test aiming to verify that the system is providing the same output as required by the end user. Generally, each test has an input, expected result, actual result and states whether the system passes the test or not.
+
+Every feature of the system was tested to ensure that it works and satisfies the functional requirements of the system. For example, test cases verified that if the navigation of the system works as expected e.g., when the user preses the \textit{History} menu item of the navigational drawer, that takes the user to this screen. In addition, self-management was tested as well e.g., the goal-setting, monitoring and feedback components. For example, to test the monitoring component of the system the user (one of the project participants) had to perform 5 minutes of \gls{pa} or \gls{sb}. The result was compered with the \textit{Actual result} (if the system measures successfully the above amount). A snippet of the monitoring component functional testing can be seen in Table \ref{tab:monitoring-com-ft}.
+
+\begin{table}[ht]
+    \centering
+    \fontsize{9}{12}\selectfont
+    \tabulinesep=1mm
+  \begin{longtabu} to \textwidth {|l|X|X|X|l|l|}
+    \hline
+      \textbf{Step No}
+      & \textbf{Test Cases}
+      & \textbf{Expected result}
+      & \textbf{Actual result}
+      & \textbf{Status}
+    \endhead \hline
+    1
+    & The user starts the mobile application and performs 5 minutes of \textbf{walking}.
+    & The system should recognise that the user is performing \gls{pa} and increments \textit{Active} time. 
+    & Works as expected e.g., updates the \gls{ui} by adding 5 minutes to the \gls{pa} progress bar in \textit{Today} \& \textit{History} screens.
+    & Pass
+    \\ \hline
+    2
+    & The user starts the mobile application and performs 5 minutes of \textbf{running}.
+    & The system should recognise that the user is performing \gls{pa} and increments \textit{Active} time. 
+    & Works as expected e.g., updates the \gls{ui} by adding 5 minutes to the \gls{pa} progress bar in \textit{Today} \& \textit{History} screens.
+    & Pass
+    \\ \hline
+\end{longtabu}
+    \caption{Monitoring activity functional test snippet}
+    \label{tab:monitoring-com-ft}
+\end{table}
+
+A total of 30 test cases in different categories were created to ensure that every implemented feature of the system is tested. The system successfully pass all of the tests. The device used during the tests was \textit{Google Pixel} \footnote{\url{https://madeby.google.com/intl/en_uk/phone/}}. All test cases can be seen in Appendix \ref{chapter:functional-testing}.
 
 \section{Survey results}
 In order to test \textit{ActiveMinutes}'s performance in a real-life scenario, the mobile application was deployed to a total of 3 fellow university students mobile phones. Each participant, used the application for a full day. 
