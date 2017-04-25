@@ -94,7 +94,9 @@ The design process has gone through many iterations to ensure the best possible 
     \end{lstlisting}
     
     \subsection{Classifier}
-    After the Data Processing and Feature Extraction and Feature Selection stages a classifier is built. The initial research suggested the use of the k-Nearest Neighbors (kNN) algorithm to build the classifier due to the fact that it does not require much CPU work and thus it is battery friendly (see \ref{section:learning_alg_accuracy_power_consm}). Based on those findings, the proposed mobile system will employ the same learning algorithm. 
+    After the Data Processing and Feature Extraction and Feature Selection stages a classifier is built. The initial research suggested the use of the k-Nearest Neighbors (kNN) algorithm to build the classifier due to the fact that it does not require much device resources such as CPU calculations (see \ref{section:learning_alg_accuracy_power_consm}). Based on those findings, the proposed mobile system  employs the same learning algorithm.
+    
+    There are several advantages of training a classifier for the project and not using solutions such as \textit{Google Fit}\footnote{\url{https://developers.google.com/fit/}}. The mobile application would not require a Wifi connection to monitor the user. Commercial applications such as \textit{Human} \citep{human2017} use the \textit{Google Fit} platform to monitor the user which renders them useless if no Internet connection is available. The reason for this is that applications using Google Fit services need to process the collected information offline. Another advantage of building a classifier for the project is that it can be personalised in the future. When enough data is gathered from the user, it can be used to retrain the model whereas that would not be possible if using the \textit{Google Fit} recording API since the application would be using external general classifier offline. 
     
         
     \section{Architectural design}
