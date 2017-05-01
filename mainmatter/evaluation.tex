@@ -1,12 +1,19 @@
 \chapter{Testing and Evaluation}
 \label{chapter:testing-and-eval}
-The purpose of this chapter is to evaluate how effective is the developed mobile application in respect to applying the behaviour change theory discussed in Chapter \ref{Chapter:Literature-Review}. To examine that, a series of tests were performed, namely \textit{Acceptance}, \textit{Functional} and \textit{Usability} testing. Furthermore, a survey was carried out on three university students in order to obtain general user opinion regarding varying aspects of the application. The tests performed on the system are going to be discussed first followed by a discussion on how the system compares with a current commercial product in the same field. Finality, the survey responses are examined.
+The purpose of this chapter is to evaluate how effective the developed mobile application is in respect to applying the behaviour change theory discussed in Chapter \ref{Chapter:Literature-Review}. To examine this, a series of tests were performed, namely: \textit{Acceptance}, \textit{Functional} and \textit{Usability} testing. Furthermore, a survey was carried out with three university students in order to obtain general user opinion regarding varying aspects of the application. The tests performed on the system are going to be discussed first followed by a discussion on how the system compares with a current commercial product in the same field. Finality, the survey responses are examined.
 
 \section{Acceptance Testing}
-Acceptance testing is a key part of the software development process. It evaluates weather the software conforms with the client requirements. Consequently, it is determined if the end-product is capable of performing the specified functionality. The following sub-components of the system underwent Acceptance testing, namely \textit{Goal-Setting Component} (\gls{gsc}), \textit{Monitoring Component} (\gls{mc}) and \textit{Feedback Component} (\gls{fc}).
+Acceptance testing is a key part of the software development process. It evaluates weather the software conforms with the client requirements. Consequently, it is determined if the end-product is capable of performing the specified functionality. The following sub-components of the system underwent Acceptance testing, namely: \textit{Goal-Setting Component} (\gls{gsc}), \textit{Monitoring Component} (\gls{mc}) and \textit{Feedback Component} (\gls{fc}).
 
 \subsection{Goal-Setting Component}
-All of the three specifications for this component were implemented successfully. The list of the implemented requirements can be seen in Table \ref{tab:gsc-acceptance-tests}. The first requirement - "\gls{gsc}" shall provide list of recommended \gls{pa} goals - was implemented by utilising an Android framework component called \textit{Dialog} \citep{androiddialogs_2017}. A Dialog window is presented to the user so they can choose their \gls{pa} goal in minutes (e.g. 10, 20, 30, 60). 
+The three specifications for this component were all implemented successfully. The list of the implemented requirements can be seen in Table \ref{tab:gsc-acceptance-tests}. 
+
+\begin{itemize}
+    \item \textit{"\gls{gsc} shall provide list of recommended \gls{pa} goals"} - is implemented by utilising an Android framework component called \textit{Dialog} \citep{androiddialogs_2017}. A Dialog window is presented to the user so they can choose their \gls{pa} goal in minutes (e.g. 10, 20, 30, 60).
+    \item \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented in the \textit{initial setup} set of screens discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens (which offer options such as setting the \gls{pa}, \gls{mci} and the \textit{Sleeping Hours} time interval) default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \textit{Sleeping Hours} time interval is set to 8pm to 8am. 
+    \item \textit{"\gls{gsc} shall allow the user to set a Maximum Continuous Inactivity (MCI)..."} is successfully implemented using a dialog window. It allows the user to set their \gls{st} (or \gls{mci}) goal by selecting it from a list of preset values in the dialog. In addition to the \textit{initial setup} screens the user is able to do that in the \textit{Settings} screen. 
+\end{itemize}
+ 
 
 \begin{table}[ht]
     \centering
@@ -34,9 +41,7 @@ All of the three specifications for this component were implemented successfully
     \label{tab:gsc-acceptance-tests}
 \end{table}
 
-The second requirement \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented in the \textit{initial setup} set of screens discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens (which offer options such as setting the \gls{pa}, \gls{mci} and the \textit{Sleeping Hours} time interval) default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \textit{Sleeping Hours} time interval is set to 8pm to 8am. 
 
-The third and last requirement "\gls{gsc} shall allow the user to set a Maximum Continuous Inactivity (MCI)..." was successfully implemented using a dialog window. It allows the user to set their \gls{st} (or \gls{mci}) goal by selecting it from a list of preset values in the dialog. In addition to the \textit{initial setup} screens the user is able to do that in the \textit{Settings} screen. 
 
 
 \subsection{Monitoring component}
