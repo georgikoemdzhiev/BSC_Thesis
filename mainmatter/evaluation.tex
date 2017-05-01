@@ -6,18 +6,77 @@ The purpose of this chapter is to evaluate how effective is the developed mobile
 Acceptance testing is a key part of the software development process. It evaluates weather the software conforms with the client requirements. Consequently, it is determined if the end-product is capable of performing the specified functionality. The following sub-components of the system underwent Acceptance testing, namely \textit{Goal-Setting Component} (\gls{gsc}), \textit{Monitoring Component} (\gls{mc}) and \textit{Feedback Component} (\gls{fc}).
 
 \subsection{Goal-Setting Component}
-All of the three specifications for this component were implemented successfully. The list of the implemented requirements can be seen in Appendix \ref{chapter:am-acceptance}.
+All of the three specifications for this component were implemented successfully. The list of the implemented requirements can be seen in Table \ref{tab:gsc-acceptance-tests}. The first requirement - "\gls{gsc}" shall provide list of recommended \gls{pa} goals - was implemented by utilising an Android framework component called \textit{Dialog} \citep{androiddialogs_2017}. A Dialog window is presented to the user so they can choose their \gls{pa} goal in minutes (e.g. 10, 20, 30, 60). 
 
-The first requirement - "\gls{gsc}" shall provide list of recommended \gls{pa} goals - was implemented by utilising an Android framework component called \textit{Dialog} \citep{androiddialogs_2017}. A Dialog window is presented to the user so they can choose their \gls{pa} goal in minutes (e.g. 10, 20, 30, 60).
+\begin{table}[ht]
+    \centering
+    \tabulinesep=1.5mm
+  \begin{longtabu} to \textwidth {|X|c|X|}
+    \hline
+      \textbf{Specification}
+      & \textbf{Status}
+      & \textbf{Notes}
+    \endhead \hline
+    \gls{gsc} shall provide list of recommended \gls{pa} goals
+      & Implemented
+      & 
+    \\ \hline
+    \gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do that 
+    & Implemented
+    & If the user does not set a goal during the initial-setup, the app sets the recommended daily activity levels
+    \\ \hline
+    \gls{gsc} shall allow the user to set a Maximum Continuous Inactivity (MCI) before a reminding notification is sent 
+    & Implemented
+    & 
+    \\ \hline
+ \end{longtabu}
+    \caption{\gls{gsc} acceptance tests}
+    \label{tab:gsc-acceptance-tests}
+\end{table}
 
-The second requirement \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented in the \textit{initial setup} set of screens discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens (which offer options such as setting the \gls{pa}, \gls{mci} and the \textit{Sleeping Hours} time interval) default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \textit{Sleeping Hours} time interval is set to 8pm to 8am.
+The second requirement \textit{"\gls{gsc} shall automatically set the recommended \gls{pa} goal if the user does not explicitly do so"} is implemented in the \textit{initial setup} set of screens discussed in section \ref{section:initial-setup-screens}. If the user decides to skip the \textit{initial-setup} screens (which offer options such as setting the \gls{pa}, \gls{mci} and the \textit{Sleeping Hours} time interval) default values are set. For example, the \gls{pa} goal is set to 30 minutes, \gls{mci} (or the \gls{st} goal) is set to 60 minutes and the \textit{Sleeping Hours} time interval is set to 8pm to 8am. 
 
 The third and last requirement "\gls{gsc} shall allow the user to set a Maximum Continuous Inactivity (MCI)..." was successfully implemented using a dialog window. It allows the user to set their \gls{st} (or \gls{mci}) goal by selecting it from a list of preset values in the dialog. In addition to the \textit{initial setup} screens the user is able to do that in the \textit{Settings} screen. 
 
-\subsection{Monitoring component}
-Four out of the five initially set features were fully implemented. The list of the implemented requirements can be seen in Appendix \ref{chapter:am-acceptance}.
 
-First of those features \textit{HAR component shall recognise 4 activities(walking, running, cycling and static)} was implemented by gathering activity data from fellow university students and training a classifier to recognise the above-mentioned activities.
+\subsection{Monitoring component}
+Four out of the five initially set features were fully implemented. The list of the implemented requirements can be seen in Table \ref{tab:mc-acceptance-tests}. First of those features \textit{HAR component shall recognise 4 activities(walking, running, cycling and static)} was implemented by gathering activity data from fellow university students and training a classifier to recognise the above-mentioned activities.
+
+
+\begin{table}[ht]
+    \centering
+    \tabulinesep=1.5mm
+  \begin{longtabu} to \textwidth {|X|c|X|}
+    \hline
+      \textbf{Specification}
+      & \textbf{Status}
+      & \textbf{Notes}
+    \endhead \hline
+    \gls{mc} component shall classify four physical activities
+    & Implemented
+    & The classifier is trained to recognise \textit{walking}, \textit{running}, \textit{cycling} and \textit{static}
+    \\ \hline
+    \gls{mc} shall the increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised
+    & Implemented
+    & 
+    \\ \hline
+    The \gls{mc} shall personalise \gls{har}'s classifier
+    & Not implemented
+    & Due to the time constraints of the project this feature was not implemented.
+    \\ \hline
+    The system shall allow the user to group the collected data in "Daily" and "Weekly" representation
+    & Implemented
+    & This is implemented in the History screen of the application
+    \\ \hline
+    The user shall be able to set the \textit{Sleeping Hours Time Interval} (\gls{shti}) during which no measurement of \gls{pa} or \gls{st} should occur
+    & Implemented
+    & 
+    \\ \hline
+ \end{longtabu}
+    \caption{\gls{mc} acceptance tests}
+    \label{tab:mc-acceptance-tests}
+\end{table}
+
 
 As far as \textit{\gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised} is concerned, this feature was implemented in the \textit{ActivityMonitor} class (see section \ref{section:activity-monitor}). This class is responsible for incrementing the activity and inactivity values depending on the recognised class by the classifier.
 
@@ -27,14 +86,43 @@ The next requirement - \textit{The user shall be able to set the \textit{Sleepin
 
 There were some features of the system that were not implemented since it was determined to be too complex given the project time constrains. One of those feature was \textit{The \gls{mc} shall personalise \gls{har}'s classifier}. This feature was discussed in section \ref{section:classifier-personal-service} and it has been designed as Android \textit{Service}. It uses the gathered-with-time and filtered by the classifier's confidence level data (e.g. above 80\% - to filter only the recognised activities with high confidence). The service combines this data with the general one and produces a personalised model that is used for further classification. According to \citet[376]{arapakis_athanasakos_jose_2010}, that is expected to improve the classifier's accuracy.
 
-\subsection{Feedback Component}
-As far as the \gls{fc} is concerned, a total of three features were successfully implemented. One of the initial requirements of the \gls{fc} was not implement due to the project's time constrains. \textit{FeedbackProvider} (see section \ref{section:feedback-provider}) represents the \gls{fc} implementation system-wise.
 
-The first requirement - \textit{\gls{fc} shall notify the user when they are being sedentary for 1 hour} allows the user to be notified for a prolonged sedentary time. This feature was implemented by utilising Android's \textit{Notification} API. In addition, this API is used to satisfy another feature as well, namely \textit{\gls{fc} shall notify the user when a previously set goal is attained}. It allows the user to be notified when they achieve their daily goal (e.g. 30 minutes of \gls{pa}).
+\subsection{Feedback Component}
+As far as the \gls{fc} is concerned, a total of three features were successfully implemented (see Table \ref{tab:fc-acceptance-tests}. One of the initial requirements of the \gls{fc} was not implement due to the project's time constrains. \textit{FeedbackProvider} (see section \ref{section:feedback-provider}) represents the \gls{fc} implementation system-wise. The first requirement - \textit{\gls{fc} shall notify the user when they are being sedentary for 1 hour} allows the user to be notified for a prolonged sedentary time. This feature was implemented by utilising Android's \textit{Notification} API. In addition, this API is used to satisfy another feature as well, namely \textit{\gls{fc} shall notify the user when a previously set goal is attained}. It allows the user to be notified when they achieve their daily goal (e.g. 30 minutes of \gls{pa}).
+
+\begin{table}[ht]
+    \centering
+    \tabulinesep=1.5mm
+  \begin{longtabu} to \textwidth {|X|c|X|}
+    \hline
+      \textbf{Specification}
+      & \textbf{Status}
+      & \textbf{Notes}
+    \endhead \hline
+    \gls{fc} shall notify the user when they are being sedentary for 1 hour (or the value set by the user) as recommended by \citet[]{swartz2011}
+    & Implemented
+    & 
+    \\ \hline
+    \gls{fc} shall notify the user when a previously set goal is attained (e.g. being active for 30 minutes)
+    & Implemented
+    & 
+    \\ \hline
+    \gls{fc} shall not send notifications during the "Sleeping Hours" time interval
+    & Implemented
+    & 
+    \\ \hline
+    \gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week
+    & Not Implemented
+    & Although good to have, due to time constraints this feature was not implemented.
+    \\ \hline
+ \end{longtabu}
+    \caption{\gls{fc} acceptance tests}
+    \label{tab:fc-acceptance-tests}
+\end{table}
 
 Another feature implemented feature - \textit{\gls{fc} shall not send notifications during the user set "Sleeping Hours" time interval} makes sure that the system stops monitoring user's \gls{pa} and \gls{st} levels when \textit{Sleeping Hours} time interval is entered. 
 
-Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability. The list with all of the requirements of this component can be seen in Appendix \ref{chapter:am-acceptance}.
+Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability.
 
 \section{Functional Testing}
 This is a quality assurance (QA) test aiming to verify that the system is providing the same output as required by the end user. Each test has an input, expected result, actual result and states whether the system passes the test or not.
