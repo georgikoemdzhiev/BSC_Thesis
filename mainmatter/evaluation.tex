@@ -45,7 +45,7 @@ The three specifications for this component were all implemented successfully. T
 
 
 \subsection{Monitoring component}
-Four out of the five initially set features were fully implemented. The list of the implemented requirements can be seen in Table \ref{tab:mc-acceptance-tests}. First of those features \textit{HAR component shall recognise 4 activities(walking, running, cycling and static)} was implemented by gathering activity data from fellow university students and training a classifier to recognise the above-mentioned activities.
+Four out of the five initially set features were fully implemented. The list of the implemented requirements can be seen in Table \ref{tab:mc-acceptance-tests}. First of those features - \textit{HAR component shall recognise 4 activities(walking, running, cycling and static)} was implemented by gathering activity data from fellow university students and training a classifier to recognise the above-mentioned activities.
 
 
 \begin{table}[ht]
@@ -85,11 +85,11 @@ Four out of the five initially set features were fully implemented. The list of 
 
 As far as \textit{\gls{mc} shall increment user's \gls{pa} or \gls{st} value whenever physical activity or sedentary behaviour is recognised} is concerned, this feature was implemented in the \textit{ActivityMonitor} class (see section \ref{section:activity-monitor}). This class is responsible for incrementing the activity and inactivity values depending on the recognised class by the classifier.
 
-\textit{The system shall allow the user to group the collected data in "Daily" and "Weekly" representation}. This feature was implemented in the \textit{History} screen of \textit{ActiveMinutes}. The \gls{ui} of this screen includes \textit{DAILY} and \textit{WEEKLY} buttons allowing the user to switch between both representation of the collected data, accordingly.
+\textit{The system shall allow the user to group the collected data in "Daily" and "Weekly" representation}. This feature was implemented in the \textit{History} screen of \textit{ActiveMinutes}. The \gls{ui} of this screen includes \textit{DAILY} and \textit{WEEKLY} buttons allowing the user to switch between both representations of the collected data, accordingly.
 
 The next requirement - \textit{The user shall be able to set the \textit{Sleeping Hours} time interval during which no measurement of \gls{pa} or \gls{st} should occur} - was implemented in the \textit{Settings} screen. The \gls{ui} of this screen provides the user with the option to change their \textit{Sleeping Hours} time interval by tapping on the appropriate menu item and choosing the desirable start and end times.
 
-There were some features of the system that were not implemented since it was determined to be too complex given the project time constrains. One of those feature was \textit{The \gls{mc} shall personalise \gls{har}'s classifier}. This feature was discussed in section \ref{section:classifier-personal-service} and it has been designed as Android \textit{Service}. It uses the gathered-with-time and filtered by the classifier's confidence level data (e.g. above 80\% - to filter only the recognised activities with high confidence). The service combines this data with the general one and produces a personalised model that is used for further classification. According to \citet[376]{arapakis_athanasakos_jose_2010}, that is expected to improve the classifier's accuracy.
+There were some features of the system that were not implemented since it was determined to be too complex given the project time constraints. One of those feature was \textit{The \gls{mc} shall personalise \gls{har}'s classifier}. This feature was discussed in section \ref{section:classifier-personal-service} and it has been designed as Android \textit{Service}. It uses the gathered-with-time and filtered by the classifier's confidence level data (e.g. above 80\% - to filter only the recognised activities with high confidence). The service combines this data with the general one and produces a personalised model that is used for further classification. According to \citet[376]{arapakis_athanasakos_jose_2010}, that is expected to improve the classifier's accuracy.
 
 
 \subsection{Feedback Component}
@@ -127,12 +127,12 @@ As far as the \gls{fc} is concerned, a total of three features were successfully
 
 Another feature implemented feature - \textit{\gls{fc} shall not send notifications during the user set "Sleeping Hours" time interval} makes sure that the system stops monitoring user's \gls{pa} and \gls{st} levels when \textit{Sleeping Hours} time interval is entered. 
 
-Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability.
+Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather a screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability.
 
 \section{Functional Testing}
 This is quality assurance (QA) testing that aims to verify that the system is providing the same output as required by the end user. Each test has an input, expected result, actual result and states whether the system passes the test or not.
 
-Every feature of the system was tested to ensure that it works and satisfies the functional requirements of the system. For example, test cases verified that if the navigation of the system works as expected e.g., when the user preses the \textit{History} menu item of the navigational drawer, that takes the user to this screen. In addition, self-management was tested as well e.g., the goal-setting, monitoring and feedback components. For example, to test the monitoring component of the system the user (one of the project participants) had to perform 5 minutes of \gls{pa} or \gls{sb}. The result was compered with the \textit{Actual result} (if the system measures successfully the above amount). A snippet of the monitoring component functional testing can be seen in Table \ref{tab:monitoring-com-ft}.
+Every feature of the system was tested to ensure that it works and satisfies the functional requirements of the system. For example, test cases verified that if the navigation of the system works as expected, e.g.\ when the user presses the \textit{History} menu item of the navigational drawer, that takes the user to this screen. Also, self-management was tested as well, e.g.\ the goal-setting, monitoring and feedback components. For example, to test the monitoring component of the system the user (one of the project participants) had to perform 5 minutes of \gls{pa} or \gls{sb}. The result was compared with the \textit{Actual result} (if the system measures successfully the above amount). A snippet of the monitoring component functional testing can be seen in Table \ref{tab:monitoring-com-ft}.
 
 \begin{table}[ht]
     \centering
@@ -163,10 +163,10 @@ Every feature of the system was tested to ensure that it works and satisfies the
     \label{tab:monitoring-com-ft}
 \end{table}
 
-A total of 30 test cases in different categories were created to ensure that every implemented feature of the system is tested. The system successfully pass all of the tests. The device used during the tests was \textit{Google Pixel} \footnote{\url{https://madeby.google.com/intl/en_uk/phone/}}. All test cases can be seen in Appendix \ref{chapter:functional-testing}.
+A total of 30 test cases in different categories were created to ensure that every implemented feature of the system is tested. The system successfully passes all of the tests. The device used during the tests was \textit{Google Pixel} \footnote{\url{https://madeby.google.com/intl/en_uk/phone/}}. All test cases can be seen in Appendix \ref{chapter:functional-testing}.
 
 \section{Usability Testing}
-In addition to acceptance and functional testing, usability testing has been performed on the system to determine if it is easy to use. The usability test consisting of 16 tasks that the a real user (i.e., one of the project participants) performed on the system. Two of the tests can be seen in Table \ref{tab:usability-test-snippet}. The full list of the tasks can be seen in Appendix \ref{chapter:usability-testing}.
+In addition to acceptance and functional testing, usability testing has been performed on the system to determine if it is easy to use. The usability test consisting of 16 tasks that the real user (i.e., one of the project participants) performed on the system. Two of the tests can be seen in Table \ref{tab:usability-test-snippet}. The full list of the tasks can be seen in Appendix \ref{chapter:usability-testing}.
 
 \begin{table}[ht]
     \centering
@@ -229,10 +229,10 @@ Feature-wise, \textit{ActiveMinutes} offers a wider range of goals the user can 
     \label{figure:comparison-with-human}
 \end{figure*}
 
-Having said that, \textit{Human} offers several features which are not present in \textit{ActiveMinutes}. For example, the user has the opportunity to compare their goal-performance with the performance of nearby people who are using the app as well. Also, \textit{Human} shows a breakdown of the \gls{pa}. For example, the user can see how much time they spend walking or cycling. 
+Having said that, \textit{Human} offers several features which are not present in \textit{ActiveMinutes}. For example, the user can compare their goal-performance with the performance of nearby people who are using the app as well. Also, \textit{Human} shows a breakdown of the \gls{pa}. For example, the user can see how much time they spend walking or cycling. 
 
 \section{Survey results}
-In order to test \textit{ActiveMinutes}'s performance in a real-life scenario, the mobile application was installed on a total three university students mobile phones. It was used for an entire day before the participants had to share their feedback via a survey. A survey contained a total of 9 questions, snippet of the survey can be seen in Table \ref{tab:user-survey-extract}. Each survey question and summary response are going to be discussed next. All questions can be seen in Appendix \ref{chapter:survey-results}.
+In order to test \textit{ActiveMinutes}'s performance in a real-life scenario, the mobile application was installed on a total three university students mobile phones. It was used for an entire day before the participants had to share their feedback via a survey. A survey contained a total of 9 questions, a snippet of the survey can be seen in Table \ref{tab:user-survey-extract}. Each survey question and summary response are going to be discussed next. All questions can be seen in Appendix \ref{chapter:survey-results}.
 
 \begin{table}[ht]
     \centering
