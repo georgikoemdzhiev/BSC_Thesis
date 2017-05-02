@@ -130,7 +130,7 @@ Another feature implemented feature - \textit{\gls{fc} shall not send notificati
 Last but not least, \textit{\gls{fc} shall send a notification to the user every Sunday to show goal-performance feedback for the past week} - a feature (or rather screen) which provides more information to the user regarding their goal-performance in comparison the only receiving notifications. Although "good-to-have", this feature was not implemented due to the project's time constrains rather than lack of technical capability.
 
 \section{Functional Testing}
-This is a quality assurance (QA) test aiming to verify that the system is providing the same output as required by the end user. Each test has an input, expected result, actual result and states whether the system passes the test or not.
+This is quality assurance (QA) testing that aims to verify that the system is providing the same output as required by the end user. Each test has an input, expected result, actual result and states whether the system passes the test or not.
 
 Every feature of the system was tested to ensure that it works and satisfies the functional requirements of the system. For example, test cases verified that if the navigation of the system works as expected e.g., when the user preses the \textit{History} menu item of the navigational drawer, that takes the user to this screen. In addition, self-management was tested as well e.g., the goal-setting, monitoring and feedback components. For example, to test the monitoring component of the system the user (one of the project participants) had to perform 5 minutes of \gls{pa} or \gls{sb}. The result was compered with the \textit{Actual result} (if the system measures successfully the above amount). A snippet of the monitoring component functional testing can be seen in Table \ref{tab:monitoring-com-ft}.
 
@@ -166,7 +166,7 @@ Every feature of the system was tested to ensure that it works and satisfies the
 A total of 30 test cases in different categories were created to ensure that every implemented feature of the system is tested. The system successfully pass all of the tests. The device used during the tests was \textit{Google Pixel} \footnote{\url{https://madeby.google.com/intl/en_uk/phone/}}. All test cases can be seen in Appendix \ref{chapter:functional-testing}.
 
 \section{Usability Testing}
-In addition to the above-mentioned types of testing, usability testing has been performed on the system to determine if it is easy to use. To determine that the usability test consisting of 16 tasks that the a real user (i.e., one of the project participants) performed on the system. A snippet of the usability test can be seen in Table \ref{tab:usability-test-snippet}. The full list of the tasks can be seen in Appendix \ref{chapter:usability-testing}.
+In addition to acceptance and functional testing, usability testing has been performed on the system to determine if it is easy to use. The usability test consisting of 16 tasks that the a real user (i.e., one of the project participants) performed on the system. Two of the tests can be seen in Table \ref{tab:usability-test-snippet}. The full list of the tasks can be seen in Appendix \ref{chapter:usability-testing}.
 
 \begin{table}[ht]
     \centering
@@ -194,12 +194,12 @@ In addition to the above-mentioned types of testing, usability testing has been 
     \label{tab:usability-test-snippet}
 \end{table}
 
-The test results show that the user finds the mobile application easy to use. For example a the user was able to understand how to perform all of tasks part of the test. However, when asked to explain the functionality \textit{History} screen, the user spend a bit more time trying to made the connection between the top \gls{pa} and \gls{mci} labels and the two progress bars. This confusion can be easily fixed by adding a text label above each of the progress bars to indicated which is one is displaying \gls{pa} and \gls{mci}. 
+The results from the test indicate that the user finds the mobile application easy to use. For example the user was able to understand how to perform all of tasks part of the test. However, when asked to explain the functionality \textit{History} screen, the user spend more time trying to make the connection between the top \gls{pa} and \gls{mci} labels and the two progress bars. This confusion can be easily fixed by adding a text label above each of the progress bars to indicated which is one is displaying \gls{pa} and \gls{mci}.
 
-It is worth mentioning that the user was familiar with the Android platform prior to the test. That means that standard icons such as the icon used to indicate the presents of a navigational drawer was already familiar to the user which made the task of accessing the different screens of the application a lot easier. Future usability tests should include a wider range of users.
+All of the usability tests indicate that the mobile application is fairly easy to understand and use. The user was able to complete all tests successfully. It is worth mentioning that the user was familiar with the Android platform prior to the test. That means that standard icons such as the icon used to indicate the presents of a navigational drawer was already familiar to the user which made the task of accessing the different screens of the application a lot easier. Future usability tests should include a wider range of users.
 \newpage
 \section{Comparing the system with commercial solutions}
-The system has been compared with a commercial mobile application currently available in the market, namely \textit{Human}\footnote{\url{http://human.co}} that offers similar functionality. The two systems have been compared regarding battery consumptions, classifier technology used and the main features each of the systems offers. To do the comparison, the two applications have been installed on \textit{Google Pixel} device and evaluated for a full day. The following subsections will discuss the evaluation findings.
+The system has been compared with a commercial mobile application currently available in the market, namely \textit{Human}\footnote{\url{http://human.co}} that offers similar functionality. The two systems have been compared regarding battery consumption, classifier technology used and the main features each of the systems offers. To do the comparison, the two applications have been installed on \textit{Google Pixel} device and evaluated for a full day. The following subsections will discuss the evaluation findings.
 
 \subsection{Battery consumption}
 The battery consumption of both application has been evaluated by using an Android an android application called \textit{AccuBattery}\footnote{\url{https://play.google.com/store/apps/details?id=com.digibites.accubattery&hl=en_GB}}. The results show that \textit{ActiveMinutes} uses a considerable amount of battery in comparison to \textit{Human}. According to the \textit{AccuBattery} measurements, \textit{ActiveMinutes} consumed about 150 mAh for the duration of the one day evaluation. That is a lot more then what \textit{Human} consumed - 34 mAh.
@@ -210,12 +210,60 @@ As it was discussed in section \ref{section:classifier}, \textit{ActiveMinutes} 
 Having said that, \textit{ActiveMinutes} has several disadvantages. Since \textit{Human} uses \textit{Google Fit} to perform the monitoring, it uses a combination of sensors such as GPS to perform \gls{har}. That means that the system is less likely to recognise involuntary movements of the device as \gls{pa}. For example, if the user is sitting on a couch and moving their smartphone up and down, the system would not recognise that as \gls{pa}. Although, \textit{ActiveMinutes} keeps track of the last three activities to minimise the classification of these involuntary movements as \gls{pa} it is easy to "fool" the system by going through the above-mentioned example.
 
 \subsection{Features}
-Feature-wise, \textit{ActiveMinutes} offers a wider range of goals the user can set in comparison to what \textit{Human} offers. For example, 10, 20, 30, 60, 120 and 30, 60 and 90 minutes are the possible values the user can choose from when setting \gls{pa} and \gls{sb} goals, respectively. For comparison, \textit{Human} offers only three values for both \gls{pa} and \gls{sb} goals: 30, 60 an 120. By offering a wider range of goal values the user can make a smoother transition from doing 10 minutes of physical activity per day to doing up to 2 hours. In addition to providing a winder range of goal values, \textit{ActiveMinutes} offers the user the option to change their \textit{SleepingHours} interval ("Inactivity nudge" in \textit{Human}) whereas this value in \textit{Human} is pre-set i.e. 9AM 0 7PM.
+Feature-wise, \textit{ActiveMinutes} offers a wider range of goals the user can set in comparison to what \textit{Human} offers. For example, 10, 20, 30, 60, 120 and 30, 60 and 90 minutes are the possible values the user can choose from when setting \gls{pa} and \gls{sb} goals, respectively. For comparison, \textit{Human} offers only three values for both \gls{pa} and \gls{sb} goals: 30, 60 an 120 (see figure \ref{figure:comparison-with-human}). By offering a wider range of goal values the user can make a smoother transition from doing 10 minutes of physical activity per day to doing up to 2 hours. In addition to providing a winder range of goal values, \textit{ActiveMinutes} offers the user the option to change their \textit{SleepingHours} interval ("Inactivity nudge" in \textit{Human}) whereas this value in \textit{Human} is pre-set i.e. 9AM - 7PM.
+
+\begin{figure*}[ht]
+    \centering
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=3cm,keepaspectratio]{human_settings_screenshot}
+        \caption{\textit{Human}}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \frame{\includegraphics[width=3cm,keepaspectratio]{settings-screen-design}}
+        \caption{\textit{ActiveMinutes}}
+    \end{subfigure}
+    \caption{Comparing the system with other solutions}
+    \label{figure:comparison-with-human}
+\end{figure*}
 
 Having said that, \textit{Human} offers several features which are not present in \textit{ActiveMinutes}. For example, the user has the opportunity to compare their goal-performance with the performance of nearby people who are using the app as well. Also, \textit{Human} shows a breakdown of the \gls{pa}. For example, the user can see how much time they spend walking or cycling. 
 
 \section{Survey results}
-In order to test \textit{ActiveMinutes}'s performance in a real-life scenario, the mobile application was installed on a total 3 university students mobile phones. It was used for an entire day before the participants had to share their feedback via a survey. A survey contained a total of 9 questions. Each question summary responses are going to be discussed next. All questions can be seen in Appendix \ref{chapter:survey-results}.
+In order to test \textit{ActiveMinutes}'s performance in a real-life scenario, the mobile application was installed on a total three university students mobile phones. It was used for an entire day before the participants had to share their feedback via a survey. A survey contained a total of 9 questions, snippet of the survey can be seen in Table \ref{tab:user-survey-extract}. Each survey question and summary response are going to be discussed next. All questions can be seen in Appendix \ref{chapter:survey-results}.
+
+\begin{table}[ht]
+    \centering
+    \ \fontsize{9}{12}\selectfont
+\tabulinesep=.5mm
+\begin{longtabu} to \textwidth {|l|l|l|}
+\hline
+    No
+    & \textbf{Question}
+    & \textbf{Response summary}
+    \endhead \hline
+    1
+    & \makecell[l]{Were you more active then usual (e.g. walking, running)\\ as a result of using ActiveMinutes?}
+    & \makecell[l]{Yes (33.33\%)\\ No (33.33\%)\\  Not sure (33.33\%)}
+    \\ \hline
+    2
+    & \makecell[l]{When notified for prolonged inactivity (e.g. 30 minutes of inactivity),\\ did you try to do at least 5 minutes of physical activity?}
+    &\makecell[l]{Yes (66.67\%)\\ No (0\%)\\  Sometimes (33.33\%)}
+    \\ \hline
+    3
+    & \makecell[l]{Do you think the application was accurate when measuring your\\ activity levels?}
+    & \makecell[l]{Yes (66.67\%)\\ No (0\%)\\  Somewhat (33.33\%)}
+    \\ \hline
+    4
+    & \makecell[l]{How easy to understand was the user interface of the application?\\ (0 being very difficult and 100 being very easy)}
+    & \makecell[l]{Response 1 - 100\\ Response 2 - 80\\ Response 3 - 75\\ \textbf{Average - 85}}
+    \\ \hline
+\end{longtabu}
+    \caption{User survey extract}
+    \label{tab:user-survey-extract}
+\end{table}
 
 \begin{itemize}
     \item \textit{What is your age?}

@@ -58,6 +58,7 @@ To demonstrate the actual accuracy of the model taking account only those 2 clas
     \end{table}
     
     \subsection{HAR System Implementation}
+    \label{subsection:har-system-implementation}
     The basic architecture of the \gls{har} system integrated into the application has been informed by \citet[149]{labrador2013}. For example, classes such as \textit{Point}, \textit{TimeSeries}, \textit{TimeWindow}, \textit{FeatureSet} and \textit{FeatureExtractor} form the core of the \gls{har} system. Simplified diagram of the \gls{har} system can be seen in figure \ref{fig:har_system_impl_class_diagram}. The HAR system is integrated in the \textit{ActiveMinutesService} mentioned in section \ref{section:architectural-design} so it can recognise and provide the recognised activities to \textit{ActivityMonitor} class which will be discussed shortly. A brief discussion on the main responsibilities of the HAR system classes is presented bellow.
     
     \begin{figure}[ht]
@@ -81,6 +82,7 @@ To demonstrate the actual accuracy of the model taking account only those 2 clas
         
         
 \section{Self-Management System}
+\label{section:self-management-system}
 This section discusses the implementation of self-management system. Its responsibilities include monitoring the user's activity levels as well as providing feedback upon reaching a specific threshold. A class diagram of the system can be seen in figure \ref{fig:self_management_system}. The following subsections will discuss the main components of the self-management system. 
 
 \begin{figure}[ht]
